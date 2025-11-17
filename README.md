@@ -1,16 +1,24 @@
-## Hi there 👋
+### **Olá ** 👋
+Sou Técnico em Informática, com experiência em montagem, instalação e manutenção de microcomputadores, além de sólida atuação em configuração e manutenção de redes e roteadores. Possuo domínio do Pacote Office (Word, Excel e PowerPoint) e conhecimento aprofundado sobre a estrutura e funcionamento de computadores, aplicando boas práticas de gestão e suporte em TI.
 
-<!--
-**MarcoTuliops22/MarcoTuliops22** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+Minha formação inclui lógica de programação, fundamentos da Indústria 4.0, introdução à inteligência artificial, bem como introdução a redes de computadores e infraestrutura. Também possuo conhecimentos em qualidade, produtividade e sustentabilidade em processos industriais, além de saúde e segurança no trabalho, garantindo atuação com responsabilidade e eficiência.
 
-Here are some ideas to get you started:
+Tenho experiência na criação e interpretação de dashboards, contribuindo para análise de dados e tomada de decisões. Busco sempre aprimorar minhas competências para oferecer soluções tecnológicas eficazes e alinhadas às necessidades do ambiente organizacional.
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+<hr/>
+🔧 **Technologies & Tools**
+<p>
+</p>
+
+[![My Skills](https://skillicons.dev/icons?i=js,html,css,linux,ubuntu,)](https://skillicons.dev)
+
+
+ | [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=MarcoTuliops22&layout=compact)](https://github.com/MarcoTuliops22/github-readme-stats) | [![GitHub Details](http://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=MarcoTuliops22&theme=dracula)](https://github.com/vn7n24fzkq/github-profile-summary-cards)  |  
+ | ----------- | ----------- |  
+
+
+**Follow me on my social media:**
+
+[![Instagram Badge](https://img.shields.io/badge/-Instagram-6633cc?style=flat-square&labelColor=6633cc&logo=instagram&logoColor=white&link=https://www.instagram.com/eduardobaranowski/)](https://www.instagram.com/eduardobaranowski/)
+[![Linkedin Badge](https://img.shields.io/badge/-Linkedin-6633cc?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/rodrigo-gon%C3%A7alves-santana/)](https://www.linkedin.com/in/MarcoTuliops22-091760127/)
+[![Twitch Badge](https://img.shields.io/badge/-Twitch-6633cc?style=flat-square&logo=Twitch&logoColor=white&link=https://www.twitch.tv/rodrigogoncalvess)](https://www.twitch.tv/edu_baranowski)
