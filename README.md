@@ -19,6 +19,7 @@ Tenho experiência na criação e interpretação de dashboards, contribuindo pa
 
 **Follow me on my social media:**
 
-[![Instagram Badge](https://img.shields.io/badge/-Instagram-6633cc?style=flat-square&labelColor=6633cc&logo=instagram&logoColor=white&link=https://www.instagram.com/eduardobaranowski/)](https://www.instagram.com/eduardobaranowski/)
-[![Linkedin Badge](https://img.shields.io/badge/-Linkedin-6633cc?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/rodrigo-gon%C3%A7alves-santana/)](https://www.linkedin.com/in/MarcoTuliops22-091760127/)
-[![Twitch Badge](https://img.shields.io/badge/-Twitch-6633cc?style=flat-square&logo=Twitch&logoColor=white&link=https://www.twitch.tv/rodrigogoncalvess)](https://www.twitch.tv/edu_baranowski)
+[![Instagram Badge](https://img.shields.io/badge/-Instagram-6633cc?style=flat-square&labelColor=6633cc&logo=instagram&logoColor=white&link=https://www.instagram.com/eduardobaranowski/)]
+https://www.instagram.com/marcotuliops94/
+[![Linkedin Badge](https://img.shields.io/badge/-Linkedin-6633cc?style=flat-square&logo=Linkedin&logoColor=white&link=https://https://www.linkedin.com/in/marco-t%C3%BAlio-pereira-da-silva-31b740389//)](https://www.linkedin.com/in/MarcoTuliops22-091760127/)
+
