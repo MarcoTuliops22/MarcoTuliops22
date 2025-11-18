@@ -23,6 +23,7 @@ Tenho experiência na criação e interpretação de dashboards, contribuindo pa
 )]
 https://www.instagram.com/marcotuliops94
 
-(https://www.linkedin.com/in/MarcoTuliops22-091760127/)[![Linkedin Badge](https://img.shields.io/badge/-Linkedin-6633cc?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/
+(https://www.linkedin.com/in/MarcoTuliops22-091760127/)[![Linkedin Badge](https://img.shields.io/badge/-Linkedin-6633cc?style=flat-square&logo=Linkedin&logoColor=white&link=
+https://www.linkedin.com/in/
 marco-túlio-pereira-da-silva-31b740389//]
 
