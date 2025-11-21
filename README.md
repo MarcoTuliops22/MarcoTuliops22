@@ -22,8 +22,6 @@ Tenho experiência na criação e interpretação de dashboards, contribuindo pa
 <a href="https://www.instagram.com/marcotuliops94/" target="_blank">
   <img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white">
 </a>
-
-
 <a href="https://www.linkedin.com/in/marco-t%C3%BAlio-pereira-da-silva-31b740389/" target="_blank">
   <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white">
 </a>
