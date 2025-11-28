@@ -11,7 +11,7 @@ Tenho experiência na criação e interpretação de dashboards, contribuindo pa
 
 ### 🔧 **Technologies & Tools**
 <p align="center">
-  <img src="https://skillicons.dev/icons?i=js,html,css,linux,ubuntu,git" />
+  <img src="https://skillicons.dev/icons?i=html,css,js,linux,ubuntu,git" />
 </p>
 
 ---
