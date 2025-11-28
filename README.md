@@ -10,7 +10,7 @@ Tenho experiência na criação e interpretação de dashboards, contribuindo pa
 <p>
 </p>
 
-[![My Skills](https://skillicons.dev/icons?i=js,html,css,linux,ubuntu,git,)](https://skillicons.dev)
+[![My Skills](https://skillicons.dev/icons?i=html,css,js,linux,ubuntu,git,)](https://skillicons.dev)
 
 
  | [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=marcotuliops22&layout=compact&cache_seconds=2000)](https://github.com/anuraghazra/github-readme-stats) | [![GitHub Details](https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=marcotuliops22&theme=dracula)](https://github.com/vn7n24fzkq/github-profile-summary-cards) |
