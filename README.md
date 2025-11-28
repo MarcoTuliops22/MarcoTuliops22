@@ -17,7 +17,7 @@ Tenho experiência na criação e interpretação de dashboards, contribuindo pa
 ---
 
 ### 📊 GitHub Analytics
-| <img height="180em" src="https://github-readme-stats-mu-virid.vercel.app/api/top-langs/?username=MarcoTuliops22&layout=compact&langs_count=8&theme=dracula&hide_border=true"/> | <img height="180em" src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=MarcoTuliops22&theme=dracula"/> |
+| <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs?username=MarcoTuliops22&layout=compact&langs_count=8&theme=dracula&hide_border=true" alt="Top languages"/> | <img height="180em" src="https://github-readme-stats.vercel.app/api?username=MarcoTuliops22&show_icons=true&theme=dracula&hide_border=true" alt="Profile stats"/> |
 | ----------- | ----------- |
 
 ---
