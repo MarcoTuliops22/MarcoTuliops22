@@ -12,11 +12,7 @@ Tenho experiência na criação e interpretação de dashboards, contribuindo pa
 
 [![My Skills](https://skillicons.dev/icons?i=html,css,js,linux,ubuntu,git,)](https://skillicons.dev)
 
-![Top Langs](https://github-readme-stats-git-masterorgs-github-readme-stats-team.vercel.app/api/top-langs/?username=MarcoTuliops22&layout=compact&theme=tokyonight)
-
-
-
- [![GitHub Details](https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=marcotuliops22&theme=dracula)](https://github.com/vn7n24fzkq/github-profile-summary-cards) 
+![Top Langs](https://github-readme-stats-git-masterorgs-github-readme-stats-team.vercel.app/api/top-langs/?username=MarcoTuliops22&layout=compact&theme=tokyonight) [![GitHub Details](https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=marcotuliops22&theme=dracula)](https://github.com/vn7n24fzkq/github-profile-summary-cards) 
 
 **Follow me on my social media:**
 
