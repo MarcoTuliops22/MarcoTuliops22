@@ -28,9 +28,8 @@ Tenho experiência na criação e interpretação de dashboards, contribuindo pa
 
 ---
 
-### 🗂 Outros Cards
-| ![Repos per Language](https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=MarcoTuliops22&theme=tokyonight) | ![Most Commit Language](https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=MarcoTuliops22&theme=tokyonight) |
-|---|---|
+### 🗂 Outro Card
+![Repos per Language](https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=MarcoTuliops22&theme=tokyonight)
 
 
 ### 🌐 **Follow me on my social media**
