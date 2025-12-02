@@ -12,7 +12,31 @@ Tenho experiência na criação e interpretação de dashboards, contribuindo pa
 
 [![My Skills](https://skillicons.dev/icons?i=html,css,js,linux,ubuntu,git,)](https://skillicons.dev)
 
-![Top Langs](https://github-readme-stats-git-masterorgs-github-readme-stats-team.vercel.app/api/top-langs/?username=MarcoTuliops22&layout=compact&theme=tokyonight) | [![GitHub Details](https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=marcotuliops22&theme=dracula)](https://github.com/vn7n24fzkq/github-profile-summary-cards) 
+## 📊 GitHub Analytics
+
+### 🔥 Streak + Stats
+| ![GitHub Streak](https://streak-stats.demolab.com?user=MarcoTuliops22&theme=tokyonight&hide_border=true) | ![GitHub Stats](https://github-readme-stats-git-masterorgs-github-readme-stats-team.vercel.app/api?username=MarcoTuliops22&show_icons=true&theme=tokyonight&hide_border=true) |
+|---|---|
+
+---
+
+### 🧠 Linguagens + Perfil
+| ![Top Langs](https://github-readme-stats-git-masterorgs-github-readme-stats-team.vercel.app/api/top-langs/?username=MarcoTuliops22&layout=compact&theme=tokyonight&hide_border=true) | ![Profile Details](https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=MarcoTuliops22&theme=dracula) |
+|---|---|
+
+---
+
+### 🗂 Outros Cards
+| ![Repos per Language](https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=MarcoTuliops22&theme=dracula) | ![Most Commit Language](https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=MarcoTuliops22&theme=dracula) |
+|---|---|
+
+---
+
+### 🏆 Troféus
+<p align="center">
+  <img src="https://github-profile-trophy.vercel.app/?username=MarcoTuliops22&theme=dracula&no-frame=true&row=1&column=6" />
+</p>
+
 
 **Follow me on my social media:**
 
