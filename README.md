@@ -19,8 +19,8 @@ Tenho experiência na criação e interpretação de dashboards, contribuindo pa
 
 ## 📊 **GitHub Analytics**
 
-### 🔥 Streak + Stats
-| ![GitHub Streak](https://streak-stats.demolab.com?user=MarcoTuliops22&theme=tokyonight&hide_border=true) | ![GitHub Stats](https://github-readme-stats-git-masterorgs-github-readme-stats-team.vercel.app/api?username=MarcoTuliops22&show_icons=true&theme=tokyonight&hide_border=true) |
+### 🔥  Stats
+| ![GitHub Stats](https://github-readme-stats-git-masterorgs-github-readme-stats-team.vercel.app/api?username=MarcoTuliops22&show_icons=true&theme=tokyonight&hide_border=true) |
 |---|---|
 
 ---
@@ -35,14 +35,6 @@ Tenho experiência na criação e interpretação de dashboards, contribuindo pa
 | ![Repos per Language](https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=MarcoTuliops22&theme=tokyonight) | ![Most Commit Language](https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=MarcoTuliops22&theme=tokyonight) |
 |---|---|
 
----
-
-### 🏆 Troféus
-<p align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=MarcoTuliops22&theme=tokyonight&no-frame=true&row=1&column=6" />
-</p>
-
----
 
 ### 🌐 **Follow me on my social media**
 
