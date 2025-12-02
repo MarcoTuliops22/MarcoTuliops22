@@ -23,13 +23,9 @@ Tenho experiência na criação e interpretação de dashboards, contribuindo pa
 | ![Top Langs](https://github-readme-stats-git-masterorgs-github-readme-stats-team.vercel.app/api/top-langs/?username=MarcoTuliops22&layout=compact&theme=tokyonight&hide_border=true) | ![Profile Details](https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=MarcoTuliops22&theme=tokyonight) |
 |---|---|
 
-### 🔥  Stats
- ![GitHub Stats](https://github-readme-stats-git-masterorgs-github-readme-stats-team.vercel.app/api?username=MarcoTuliops22&show_icons=true&theme=tokyonight&hide_border=true) 
----
-
-### 🗂 Outro Card
-![Repos per Language](https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=MarcoTuliops22&theme=tokyonight)
-
+### 🔥  Stats + 🗂 Outro Card
+ |![GitHub Stats](https://github-readme-stats-git-masterorgs-github-readme-stats-team.vercel.app/api?username=MarcoTuliops22&show_icons=true&theme=tokyonight&hide_border=true) | ![Repos per Language](https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=MarcoTuliops22&theme=tokyonight) |
+|---|---|
 
 ### 🌐 **Follow me on my social media**
 
