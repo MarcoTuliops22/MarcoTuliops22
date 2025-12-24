@@ -34,9 +34,9 @@ I have experience creating and interpreting **dashboards**, supporting **data an
 
 ---
 ## 🧠 Linguagens de Programação
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=MarcoTuliops22&layout=compact" />
-</p>
+![HTML](https://img.shields.io/badge/HTML-50%25-orange?style=flat-square&logo=html5)
+![CSS](https://img.shields.io/badge/CSS-30%25-blue?style=flat-square&logo=css3)
+![JavaScript](https://img.shields.io/badge/JavaScript-200%25-yellow?style=flat-square&logo=javascript)
 
 
 
