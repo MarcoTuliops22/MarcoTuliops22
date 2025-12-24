@@ -33,10 +33,13 @@ I have experience creating and interpreting **dashboards**, supporting **data an
 </p>
 
 ---
-## 🧠 Linguagens de Programação
-![Linguagens mais usadas](https://github-readme-stats.vercel.app/api/top-langs/?username=MarcoTuliops22&layout=compact&theme=dark)
+## 🚀 Linguagens mais usadas
+
+<!--START_SECTION:languages-->
+<!--END_SECTION:languages-->
 
 
+---
 ## 📊 GitHub Analytics
 
 
