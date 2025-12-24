@@ -43,13 +43,6 @@ I have experience creating and interpreting **dashboards**, supporting **data an
 
 ## 📊 GitHub Analytics
 
-<p align="center">
-  <img
-    src="https://github-readme-stats.vercel.app/api?username=MarcoTuliops22&show_icons=true&hide_border=true"
-    alt="Estatísticas do GitHub"
-  />
-</p>
-
 
 <p align="center">
   <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=MarcoTuliops22&theme=tokyonight" />
