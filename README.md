@@ -34,11 +34,12 @@ I have experience creating and interpreting **dashboards**, supporting **data an
 
 ---
 ## 🧠 Linguagens de Programação
-## 🧠 Linguagens de Programação
-![HTML](https://img.shields.io/badge/HTML5-orange?style=flat-square&logo=html5)
-![CSS](https://img.shields.io/badge/CSS3-blue?style=flat-square&logo=css3)
-![JavaScript](https://img.shields.io/badge/JavaScript-yellow?style=flat-square&logo=javascript)
-![Linux](https://img.shields.io/badge/Linux-black?style=flat-square&logo=linux)
+<p align="center">
+  <img
+    src="https://github-readme-stats.vercel.app/api/top-langs/?username=MarcoTuliops22&layout=compact&langs_count=6&hide_border=true"
+    alt="Porcentagem das linguagens"
+  />
+</p>
 
 
 
