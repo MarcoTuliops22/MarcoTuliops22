@@ -20,7 +20,8 @@ Tenho experiência na criação e interpretação de dashboards, contribuindo pa
 ## 📊 **GitHub Analytics**
 
 ### 🧠 Linguagens + Perfil
-| ![Top Langs](https://github-readme-stats-git-masterorgs-github-readme-stats-team.vercel.app/api/top-langs/?username=MarcoTuliops22&layout=compact&theme=tokyonight&hide_border=true) | ![Profile Details](https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=MarcoTuliops22&theme=tokyonight) |
+| [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs?username=MarcoTuliops22&layout=compact&theme=tokyonight&hide_border=true)](https://github.com/MarcoTuliops22/github-readme-stats)
+ | ![Profile Details](https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=MarcoTuliops22&theme=tokyonight) |
 |---|---|
 
 ### 🔥  Stats + 🗂 Outro Card
