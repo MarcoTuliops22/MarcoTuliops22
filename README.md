@@ -35,9 +35,7 @@ I have experience creating and interpreting **dashboards**, supporting **data an
 ---
 ## 🚀 Linguagens mais usadas
 
-<!--START_SECTION:languages-->
-<!--END_SECTION:languages-->
-
+![Linguagens](./metrics.svg)
 
 ---
 ## 📊 GitHub Analytics
