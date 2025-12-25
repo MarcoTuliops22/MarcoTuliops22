@@ -65,11 +65,7 @@ I have experience creating and interpreting **dashboards**, supporting **data an
 
 ## 🌐 Conecte-se comigo | Connect with me
 
-[![Instagram](https://img.shields.io/badge/Instagram-8a2be2?style=flat-square&logo=instagram&logoColor=white)](https://www.instagram.com/marcotuliops94/)
-
----
-
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-8a2be2?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/marco-t%C3%BAlio-pereira-da-silva-31b740389/)
+[![Instagram](https://img.shields.io/badge/Instagram-8a2be2?style=flat-square&logo=instagram&logoColor=white)](https://www.instagram.com/marcotuliops94/)  [![LinkedIn](https://img.shields.io/badge/LinkedIn-8a2be2?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/marco-t%C3%BAlio-pereira-da-silva-31b740389/)
 
 ---
 
