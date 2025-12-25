@@ -37,15 +37,11 @@ I have experience creating and interpreting **dashboards**, supporting **data an
 
 ## 🚀 Linguagens mais usadas
 
----
-
 ![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=MarcoTuliops22&layout=compact&theme=tokyonight)
 
 ---
 
 ## 📊 GitHub Analytics
-
----
 
   <img height="180em" src="https://github-readme-stats.vercel.app/api?username=MarcoTuliops22&show_icons=true&theme=tokyonight" />
 
@@ -68,8 +64,6 @@ I have experience creating and interpreting **dashboards**, supporting **data an
 ---
 
 ## 🌐 Conecte-se comigo | Connect with me
-
----
 
 [![Instagram](https://img.shields.io/badge/Instagram-8a2be2?style=flat-square&logo=instagram&logoColor=white)](https://www.instagram.com/marcotuliops94/)
 
