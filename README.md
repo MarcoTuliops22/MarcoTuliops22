@@ -49,6 +49,7 @@ I have experience creating and interpreting **dashboards**, supporting **data an
   <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=MarcoTuliops22&theme=tokyonight" />
   <img src="https://github-readme-activity-graph.vercel.app/graph?username=MarcoTuliops22&theme=tokyo-night" />
   <img src="https://github-profile-trophy.vercel.app/?username=MarcoTuliops22&theme=tokyonight&row=1&column=6" />
+
 ---
 
 ## 🌐 Conecte-se comigo | Connect with me
