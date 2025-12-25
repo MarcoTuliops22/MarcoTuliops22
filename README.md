@@ -37,24 +37,48 @@ I have experience creating and interpreting **dashboards**, supporting **data an
 
 ## 🚀 Linguagens mais usadas
 
+---
+
 ![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=MarcoTuliops22&layout=compact&theme=tokyonight)
 
 ---
 
 ## 📊 GitHub Analytics
 
+---
 
   <img height="180em" src="https://github-readme-stats.vercel.app/api?username=MarcoTuliops22&show_icons=true&theme=tokyonight" />
+
+---
+  
   <img src="https://streak-stats.demolab.com?user=MarcoTuliops22&theme=tokyonight" />
+
+---
+  
   <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=MarcoTuliops22&theme=tokyonight" />
+  
+---
+  
   <img src="https://github-readme-activity-graph.vercel.app/graph?username=MarcoTuliops22&theme=tokyo-night" />
+  
+---
+  
   <img src="https://github-profile-trophy.vercel.app/?username=MarcoTuliops22&theme=tokyonight&row=1&column=6" />
 
 ---
 
 ## 🌐 Conecte-se comigo | Connect with me
 
+---
+
 [![Instagram](https://img.shields.io/badge/Instagram-8a2be2?style=flat-square&logo=instagram&logoColor=white)](https://www.instagram.com/marcotuliops94/)
+
+---
+
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-8a2be2?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/marco-t%C3%BAlio-pereira-da-silva-31b740389/)
 
+---
+
 📧 **Email:** marcotuliops22@gmail.com
+
+---
