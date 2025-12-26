@@ -65,7 +65,7 @@ I have experience creating and interpreting **dashboards**, supporting **data an
   
 ---
 
-  ![GitHub Streak](https://streak-stats.demolab.com/?user=MarcoTuliops22&theme=dark&hide_border=true)
+ ![GitHub Trophies](https://github-profile-trophy.vercel.app/?username=MarcoTuliops22&theme=onedark&no-frame=true&row=1)
 
 ---
 
