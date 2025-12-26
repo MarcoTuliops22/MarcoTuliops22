@@ -1,12 +1,12 @@
-name: 📊 Linguagens GitHub
+name: 📊 GitHub Languages
 
 on:
   schedule:
-    - cron: "0 11 * * 1"
+    - cron: "0 11 * * 1" # toda segunda 08h BR
   workflow_dispatch:
 
 permissions:
-  contents: write  # <--- ESSENCIAL para commit
+  contents: write  # necessário para commit
 
 jobs:
   metrics:
@@ -20,5 +20,5 @@ jobs:
           plugin_languages: yes
           plugin_languages_details: percentage
           plugin_languages_limit: 8
-          output_action: commit    # <--- força salvar no repo
-          output_file: github-metrics.svg  # <--- nome do arquivo commitado
+          filename: github-metrics.svg   # ✅ define o nome do SVG
+          output_action: commit          # ✅ commit automático
