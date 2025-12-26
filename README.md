@@ -44,6 +44,12 @@ I have experience creating and interpreting **dashboards**, supporting **data an
 
 ## 📊 GitHub Analytics
 
+---
+
+[![Estatísticas](https://github-profile-summary-cards.vercel.app/api/cards/stats?username=MarcoTuliops22&theme=github_dark)](https://github.com/MarcoTuliops22)
+
+---
+
   <img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=MarcoTuliops22&theme=tokyonight" width="45%" />
 
 ---
@@ -59,8 +65,7 @@ I have experience creating and interpreting **dashboards**, supporting **data an
   
 ---
 
-  [![Estatísticas](https://github-profile-summary-cards.vercel.app/api/cards/stats?username=MarcoTuliops22&theme=github_dark)](https://github.com/MarcoTuliops22)
-[![Linguagens](https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=MarcoTuliops22&theme=github_dark)](https://github.com/MarcoTuliops22)
+  
 
 ---
 
