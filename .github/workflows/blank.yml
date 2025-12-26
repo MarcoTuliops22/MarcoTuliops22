@@ -10,6 +10,8 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 jobs:
   gerar-idiomas:
@@ -24,8 +26,8 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: Install PyGithub
-        run: pip install PyGithub
+      - name: Install dependencies
+        run: pip install PyGithub requests python-dateutil
 
       - name: Generate LANGUAGES_REPORT.md
         env:
@@ -37,76 +39,185 @@ import os
 import sys
 from github import Github
 from collections import defaultdict
-from datetime import datetime
+from datetime import datetime, timedelta
+import json
 
 token = os.environ.get("GH_TOKEN")
 username = os.environ.get("GITHUB_USERNAME")
 
 if not token or not username:
-    print("Erro: GH_TOKEN ou GITHUB_USERNAME não configurado")
+    print("❌ Erro: GH_TOKEN ou GITHUB_USERNAME não configurado")
     sys.exit(1)
 
-g = Github(token)
-user = g.get_user(username)
+print(f"🚀 Iniciando análise para: {username}")
+print("=" * 60)
 
-repos_data = []
-language_stats = defaultdict(int)
-language_bytes = defaultdict(int)
+try:
+    g = Github(token, per_page=100)
+    user = g.get_user(username)
+    
+    repos_data = []
+    language_stats = defaultdict(int)
+    language_bytes = defaultdict(int)
+    language_repos = defaultdict(list)
+    
+    # Contadores para estatísticas
+    total_stars = 0
+    total_forks = 0
+    active_repos = 0
+    archived_repos = 0
+    
+    print(f"📂 Coletando repositórios de {username}...")
+    
+    for i, repo in enumerate(user.get_repos()):
+        try:
+            print(f"  [{i+1}] Processando: {repo.name}")
+            
+            langs = repo.get_languages()
+            
+            # Detectar se o repositório é ativo (atualizado nos últimos 6 meses)
+            is_active = False
+            if repo.pushed_at:
+                six_months_ago = datetime.utcnow() - timedelta(days=180)
+                is_active = repo.pushed_at > six_months_ago
+            
+            if is_active:
+                active_repos += 1
+            
+            if repo.archived:
+                archived_repos += 1
+            
+            repo_info = {
+                "name": repo.name,
+                "full_name": repo.full_name,
+                "url": repo.html_url,
+                "description": repo.description or "Sem descrição",
+                "languages": langs,
+                "primary_language": repo.language or "Não detectada",
+                "stars": repo.stargazers_count,
+                "forks": repo.forks_count,
+                "watchers": repo.watchers_count,
+                "size_kb": repo.size,
+                "is_fork": repo.fork,
+                "is_archived": repo.archived,
+                "is_private": repo.private,
+                "is_active": is_active,
+                "created_at": repo.created_at.isoformat() if repo.created_at else "",
+                "updated_at": repo.updated_at.isoformat() if repo.updated_at else "",
+                "pushed_at": repo.pushed_at.isoformat() if repo.pushed_at else "",
+                "topics": repo.get_topics(),
+                "license": repo.license.name if repo.license else "Sem licença"
+            }
+            
+            repos_data.append(repo_info)
+            
+            # Estatísticas
+            total_stars += repo.stargazers_count
+            total_forks += repo.forks_count
+            
+            # Processar linguagens
+            for lang, bytes_count in langs.items():
+                language_stats[lang] += 1
+                language_bytes[lang] += bytes_count
+                language_repos[lang].append({
+                    "name": repo.name,
+                    "url": repo.html_url,
+                    "bytes": bytes_count,
+                    "stars": repo.stargazers_count
+                })
+                
+        except Exception as e:
+            print(f"  ⚠️  Erro ao processar {repo.name}: {e}")
+            continue
+    
+    print(f"✅ Análise concluída! {len(repos_data)} repositórios processados.")
+    print("=" * 60)
+    
+    # Ordenar estatísticas
+    sorted_by_repos = sorted(language_stats.items(), key=lambda x: x[1], reverse=True)
+    sorted_by_bytes = sorted(language_bytes.items(), key=lambda x: x[1], reverse=True)
+    
+    # Calcular porcentagens
+    total_repos = len(repos_data)
+    repos_with_langs = len([r for r in repos_data if r["languages"]])
+    
+    # Gerar visualização emojis
+    def get_lang_emoji(lang):
+        emoji_map = {
+            "Python": "🐍", "JavaScript": "📜", "TypeScript": "📘", 
+            "Java": "☕", "C++": "⚙️", "C#": "🔷", "Go": "🐹",
+            "Rust": "🦀", "Ruby": "💎", "PHP": "🐘", "Swift": "🐦",
+            "Kotlin": "🟪", "Dart": "🎯", "HTML": "🌐", "CSS": "🎨",
+            "Shell": "🐚", "PowerShell": "💻", "R": "📊", "Julia": "🔬",
+            "Scala": "⚡", "Elixir": "🧪", "Haskell": "λ", "Lua": "🌙",
+            "MATLAB": "📈", "Objective-C": "📱", "Perl": "🐪", "TeX": "📝"
+        }
+        return emoji_map.get(lang, "📁")
+    
+    # Gerar gráfico de barras ASCII
+    def generate_bar_chart(data, max_width=30):
+        if not data:
+            return ""
+        
+        max_value = max(data.values())
+        result = ""
+        
+        for lang, value in data.items():
+            if max_value > 0:
+                bar_length = int((value / max_value) * max_width)
+            else:
+                bar_length = 0
+            
+            bar = "█" * bar_length + "░" * (max_width - bar_length)
+            result += f"{get_lang_emoji(lang)} {lang:<15} {bar} {value}\n"
+        
+        return result
+    
+    # Gerar relatório markdown
+    now = datetime.utcnow()
+    
+    md = f"""# 📊 Relatório Completo de Linguagens
 
-for repo in user.get_repos():
-    try:
-        langs = repo.get_languages()
-        repos_data.append({
-            "name": repo.name,
-            "url": repo.html_url,
-            "languages": langs,
-            "primary_language": repo.language or "Não detectada",
-            "stars": repo.stargazers_count,
-            "updated_at": repo.updated_at.isoformat() if repo.updated_at else ""
-        })
-        for lang, b in langs.items():
-            language_stats[lang] += 1
-            language_bytes[lang] += b
-    except Exception as e:
-        print(f"Erro ao processar {repo.name}: {e}")
+## 👤 Perfil do Desenvolvedor
+**Usuário:** [{username}](https://github.com/{username})  
+**Data da análise:** {now.strftime('%d/%m/%Y %H:%M:%S')} UTC  
+**Repositórios analisados:** {total_repos}  
+**Repositórios ativos (últimos 6 meses):** {active_repos}  
+**Repositórios arquivados:** {archived_repos}  
 
-# Markdown seguro com """ para multilinhas
-md = f"""# 📊 Relatório de Linguagens - {username}
-
-**Data:** {datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')} UTC
-**Total de repositórios analisados:** {len(repos_data)}
-**Linguagens únicas encontradas:** {len(language_stats)}
+## ⭐ Estatísticas Gerais
+**Total de estrelas:** {total_stars:,} ⭐  
+**Total de forks:** {total_forks:,} 🍴  
+**Repositórios públicos:** {len([r for r in repos_data if not r['is_private']])}  
+**Repositórios privados:** {len([r for r in repos_data if r['is_private']])}  
+**Repositórios forkados:** {len([r for r in repos_data if r['is_fork']])}  
 
 ---
 
-## 🏆 Top Linguagens por repositórios
+## 🏆 TOP 10 LINGUAGENS
+
+### Por Número de Repositórios
+| # | Linguagem | Repositórios | % do Total |
+|---|-----------|-------------|------------|
 """
-sorted_langs = sorted(language_stats.items(), key=lambda x: x[1], reverse=True)
-for lang, count in sorted_langs:
-    md += f"- **{lang}**: {count} repositórios\n"
+    
+    for i, (lang, count) in enumerate(sorted_by_repos[:10], 1):
+        percentage = (count / total_repos * 100) if total_repos > 0 else 0
+        md += f"| {i} | {get_lang_emoji(lang)} {lang} | {count} | {percentage:.1f}% |\n"
+    
+    md += f"""
+### Por Volume de Código (Top 5)
+| # | Linguagem | Bytes | MB |
+|---|-----------|-------|----|
+"""
+    
+    for i, (lang, bytes_count) in enumerate(sorted_by_bytes[:5], 1):
+        mb = bytes_count / (1024 * 1024)
+        md += f"| {i} | {get_lang_emoji(lang)} {lang} | {bytes_count:,} | {mb:.1f} MB |\n"
+    
+    md += f"""
+---
 
-md += "\n---\n## 📋 Lista de Repositórios\n\n"
-md += "| Repositório | Linguagem Principal | Outras Linguagens | Estrelas | Atualização |\n"
-md += "|------------|-------------------|-----------------|---------|------------|\n"
+## 📈 Distribuição Visual
 
-for repo in repos_data:
-    langs_list = list(repo["languages"].keys())
-    other_langs = ", ".join(langs_list[:3])
-    if len(langs_list) > 3:
-        other_langs += f" (+{len(langs_list)-3})"
-    updated = repo["updated_at"][:10] if repo["updated_at"] else "N/A"
-    md += f"| [{repo['name']}]({repo['url']}) | {repo['primary_language']} | {other_langs} | {repo['stars']} | {updated} |\n"
-
-with open("LANGUAGES_REPORT.md", "w", encoding="utf-8") as f:
-    f.write(md)
-
-print("✅ LANGUAGES_REPORT.md gerado com sucesso!")
-PYTHON_CODE
-
-      - name: Commit and push
-        run: |
-          git config user.name "GitHub Action"
-          git config user.email "action@github.com"
-          git add LANGUAGES_REPORT.md
-          git diff --cached --quiet || git commit -m "📊 Atualização automática do LANGUAGES_REPORT"
-          git push
+### Gráfico de Repositórios por Linguagem
