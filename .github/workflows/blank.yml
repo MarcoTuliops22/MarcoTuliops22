@@ -6,7 +6,7 @@ on:
       - main
   workflow_dispatch:
   schedule:
-    - cron: '0 8 * * *'  # Executa todo dia às 8h UTC
+    - cron: '0 8 * * *'  # todo dia às 8h UTC
 
 permissions:
   contents: write
@@ -34,15 +34,15 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_USERNAME: ${{ github.repository_owner }}
         run: |
-          python <<EOF
+          python - <<PYTHON_CODE
           import os
           import sys
           from github import Github
           from collections import defaultdict
           from datetime import datetime
 
-          token = os.environ.get('GH_TOKEN')
-          username = os.environ.get('GITHUB_USERNAME')
+          token = os.environ.get("GH_TOKEN")
+          username = os.environ.get("GITHUB_USERNAME")
 
           if not token or not username:
               print("Erro: GH_TOKEN ou GITHUB_USERNAME não configurado")
@@ -83,29 +83,4 @@ jobs:
           md += "## 🏆 Top Linguagens por repositórios\n\n"
           sorted_langs = sorted(language_stats.items(), key=lambda x: x[1], reverse=True)
           for lang, count in sorted_langs:
-              md += f"- **{lang}**: {count} repositórios\n"
-
-          md += "\n---\n## 📋 Lista de Repositórios\n\n"
-          md += "| Repositório | Linguagem Principal | Outras Linguagens | Estrelas | Última Atualização |\n"
-          md += "|------------|-------------------|-----------------|---------|-----------------|\n"
-          for repo in repos_data:
-              langs_list = list(repo["languages"].keys())
-              other_langs = ", ".join(langs_list[:3])
-              if len(langs_list) > 3:
-                  other_langs += f" (+{len(langs_list)-3})"
-              updated = repo["updated_at"][:10] if repo["updated_at"] else "N/A"
-              md += f"| [{repo['name']}]({repo['url']}) | {repo['primary_language']} | {other_langs} | {repo['stars']} | {updated} |\n"
-
-          with open("LANGUAGES_REPORT.md", "w", encoding="utf-8") as f:
-              f.write(md)
-
-          print("✅ LANGUAGES_REPORT.md gerado com sucesso!")
-EOF
-
-      - name: Commit and push report
-        run: |
-          git config user.name "GitHub Action"
-          git config user.email "action@github.com"
-          git add LANGUAGES_REPORT.md
-          git diff --cached --quiet || git commit -m "📊 Atualização automática do LANGUAGES_REPORT"
-          git push
+              md += f"- **{lang}**:
