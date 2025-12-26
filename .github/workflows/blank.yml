@@ -1,59 +1,144 @@
-name: Update README Badges
+name: Update README with Languages
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 10 * * *'
+    - cron: '0 9 * * *'
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/update-readme.yml'
 
 jobs:
-  update-badges:
+  update-readme:
     runs-on: ubuntu-latest
-    
+    permissions:
+      contents: write
+
     steps:
-      - uses: actions/checkout@v4
-      
-      - name: Get stats
-        id: stats
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: pip install PyGithub
+
+      - name: Generate languages section
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # Usar API do GitHub para pegar estatísticas
-          response=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-            "https://api.github.com/users/MarcoTuliops22")
-          
-          public_repos=$(echo $response | jq -r '.public_repos')
-          total_stars=$(curl -s "https://api.github.com/users/MarcoTuliops22/repos?per_page=100" \
-            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" | \
-            jq '.[].stargazers_count' | awk '{s+=$1} END {print s}')
-          
-          echo "public_repos=$public_repos" >> $GITHUB_OUTPUT
-          echo "total_stars=$total_stars" >> $GITHUB_OUTPUT
-          
-      - name: Update README with badges
-        run: |
-          # Ler README
-          content=$(cat README.md)
-          
-          # Criar badges atualizados
-          badges="![Total Repos](https://img.shields.io/badge/Repositórios-${{ steps.stats.outputs.public_repos }}-blue) "
-          badges+="![Total Stars](https://img.shields.io/badge/Estrelas-${{ steps.stats.outputs.total_stars }}-yellow) "
-          badges+="![Updated](https://img.shields.io/badge/Atualizado-$(date +'%d/%m/%Y')-green)"
-          
-          # Substituir linha de badges existente ou adicionar nova
-          if echo "$content" | grep -q "!\[Total Repos\]"; then
-            # Atualizar linha existente
-            new_content=$(echo "$content" | sed "s|!\[Total Repos\].*|$badges|")
-          else
-            # Adicionar após o primeiro bloco
-            new_content=$(echo "$content" | sed "/^---$/a\\
-\\
-$badges")
-          fi
-          
-          echo "$new_content" > README.md
-          
-      - name: Commit and push
+          python << 'EOF'
+          import os
+          import json
+          from github import Github
+          from collections import defaultdict
+          from datetime import datetime
+          import re
+
+          token = os.environ.get("GH_TOKEN")
+          username = "MarcoTuliops22"
+
+          if not token:
+              print("Error: GitHub token not found")
+              exit(1)
+
+          try:
+              g = Github(token)
+              user = g.get_user(username)
+              
+              print(f"Analyzing repositories for: {username}")
+              
+              all_languages = defaultdict(int)
+              repos_count = 0
+              total_stars = 0
+              
+              for repo in user.get_repos():
+                  repos_count += 1
+                  total_stars += repo.stargazers_count
+                  
+                  langs = repo.get_languages()
+                  for lang in langs:
+                      all_languages[lang] += 1
+                  
+                  print(f"  Processed: {repo.name}")
+              
+              sorted_langs = sorted(all_languages.items(), key=lambda x: x[1], reverse=True)
+              
+              lang_emojis = {
+                  "Python": "🐍", "JavaScript": "📜", "HTML": "🌐", 
+                  "CSS": "🎨", "Shell": "🐚", "Dockerfile": "🐳",
+                  "Java": "☕", "C++": "⚙️", "C#": "🔷", "PHP": "🐘",
+                  "Ruby": "💎", "Go": "🐹", "Rust": "🦀", "TypeScript": "📘"
+              }
+              
+              now = datetime.utcnow().strftime("%d/%m/%Y %H:%M UTC")
+              
+              new_section = f"""
+<!-- START_AUTO_GENERATED_LANGUAGES -->
+## 📈 Relatório Detalhado de Linguagens
+
+### 📊 Estatísticas Gerais
+![Total Repos](https://img.shields.io/badge/Repositórios-{repos_count}-blue)
+![Total Stars](https://img.shields.io/badge/Estrelas-{total_stars}-yellow)
+![Languages](https://img.shields.io/badge/Linguagens-{len(all_languages)}-green)
+![Last Updated](https://img.shields.io/badge/Atualizado-{now.replace(' ', '%20')}-orange)
+
+### 🏆 Top Linguagens
+"""
+              
+              for i, (lang, count) in enumerate(sorted_langs[:10], 1):
+                  emoji = lang_emojis.get(lang, "💻")
+                  percentage = (count / repos_count) * 100 if repos_count > 0 else 0
+                  new_section += f"- {emoji} **{lang}**: {count} repositórios ({percentage:.1f}%)\n"
+              
+              new_section += f"""
+*Relatório gerado automaticamente • Última atualização: {now}*
+<!-- END_AUTO_GENERATED_LANGUAGES -->
+"""
+              
+              with open("README.md", "r", encoding="utf-8") as f:
+                  readme_content = f.read()
+              
+              pattern = r"<!-- START_AUTO_GENERATED_LANGUAGES -->.*<!-- END_AUTO_GENERATED_LANGUAGES -->"
+              
+              if re.search(pattern, readme_content, re.DOTALL):
+                  readme_content = re.sub(pattern, new_section, readme_content, flags=re.DOTALL)
+                  print("Updated existing section")
+              else:
+                  insert_after = "## 🔧 Technologies & Tools"
+                  if insert_after in readme_content:
+                      parts = readme_content.split(insert_after)
+                      if len(parts) > 1:
+                          readme_content = parts[0] + insert_after + parts[1] + "\n\n" + new_section
+                          print("Added new section after Technologies & Tools")
+                  else:
+                      readme_content += "\n\n" + new_section
+                      print("Added new section at the end")
+              
+              with open("README.md", "w", encoding="utf-8") as f:
+                  f.write(readme_content)
+              
+              print(f"Success! Analyzed {repos_count} repositories")
+              print(f"Found {len(all_languages)} unique languages")
+              
+          except Exception as e:
+              print(f"Error: {e}")
+              exit(1)
+          EOF
+
+      - name: Commit changes
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           git add README.md
-          git commit -m "🔄 Atualizar badges no README" || exit 0
-          git push
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "📊 Update languages report in README"
+            git push
+          fi
