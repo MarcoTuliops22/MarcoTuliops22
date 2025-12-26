@@ -1,112 +1,59 @@
-name: Generate Languages Report
+name: Update README Badges
 
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
   schedule:
-    - cron: '0 8 * * *'  # todo dia às 8h UTC
-
-permissions:
-  contents: write
+    - cron: '0 10 * * *'
 
 jobs:
-  gerar-idiomas:
+  update-badges:
     runs-on: ubuntu-latest
-
+    
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
-
-      - name: Install PyGithub
-        run: pip install PyGithub
-
-      - name: Generate LANGUAGES_REPORT.md
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_USERNAME: ${{ github.repository_owner }}
+      - uses: actions/checkout@v4
+      
+      - name: Get stats
+        id: stats
         run: |
-          python - <<PYTHON_CODE
-import os
-import sys
-from github import Github
-from collections import defaultdict
-from datetime import datetime
-
-token = os.environ.get("GH_TOKEN")
-username = os.environ.get("GITHUB_USERNAME")
-
-if not token or not username:
-    print("Erro: GH_TOKEN ou GITHUB_USERNAME não configurado")
-    sys.exit(1)
-
-g = Github(token)
-user = g.get_user(username)
-
-repos_data = []
-language_stats = defaultdict(int)
-language_bytes = defaultdict(int)
-
-for repo in user.get_repos():
-    try:
-        langs = repo.get_languages()
-        repos_data.append({
-            "name": repo.name,
-            "url": repo.html_url,
-            "languages": langs,
-            "primary_language": repo.language or "Não detectada",
-            "stars": repo.stargazers_count,
-            "updated_at": repo.updated_at.isoformat() if repo.updated_at else ""
-        })
-        for lang, b in langs.items():
-            language_stats[lang] += 1
-            language_bytes[lang] += b
-    except Exception as e:
-        print(f"Erro ao processar {repo.name}: {e}")
-
-# Markdown seguro com """ para multilinhas
-md = f"""# 📊 Relatório de Linguagens - {username}
-
-**Data:** {datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')} UTC
-**Total de repositórios analisados:** {len(repos_data)}
-**Linguagens únicas encontradas:** {len(language_stats)}
-
----
-
-## 🏆 Top Linguagens por repositórios
-"""
-sorted_langs = sorted(language_stats.items(), key=lambda x: x[1], reverse=True)
-for lang, count in sorted_langs:
-    md += f"- **{lang}**: {count} repositórios\n"
-
-md += "\n---\n## 📋 Lista de Repositórios\n\n"
-md += "| Repositório | Linguagem Principal | Outras Linguagens | Estrelas | Atualização |\n"
-md += "|------------|-------------------|-----------------|---------|------------|\n"
-
-for repo in repos_data:
-    langs_list = list(repo["languages"].keys())
-    other_langs = ", ".join(langs_list[:3])
-    if len(langs_list) > 3:
-        other_langs += f" (+{len(langs_list)-3})"
-    updated = repo["updated_at"][:10] if repo["updated_at"] else "N/A"
-    md += f"| [{repo['name']}]({repo['url']}) | {repo['primary_language']} | {other_langs} | {repo['stars']} | {updated} |\n"
-
-with open("LANGUAGES_REPORT.md", "w", encoding="utf-8") as f:
-    f.write(md)
-
-print("✅ LANGUAGES_REPORT.md gerado com sucesso!")
-PYTHON_CODE
-
+          # Usar API do GitHub para pegar estatísticas
+          response=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/users/MarcoTuliops22")
+          
+          public_repos=$(echo $response | jq -r '.public_repos')
+          total_stars=$(curl -s "https://api.github.com/users/MarcoTuliops22/repos?per_page=100" \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" | \
+            jq '.[].stargazers_count' | awk '{s+=$1} END {print s}')
+          
+          echo "public_repos=$public_repos" >> $GITHUB_OUTPUT
+          echo "total_stars=$total_stars" >> $GITHUB_OUTPUT
+          
+      - name: Update README with badges
+        run: |
+          # Ler README
+          content=$(cat README.md)
+          
+          # Criar badges atualizados
+          badges="![Total Repos](https://img.shields.io/badge/Repositórios-${{ steps.stats.outputs.public_repos }}-blue) "
+          badges+="![Total Stars](https://img.shields.io/badge/Estrelas-${{ steps.stats.outputs.total_stars }}-yellow) "
+          badges+="![Updated](https://img.shields.io/badge/Atualizado-$(date +'%d/%m/%Y')-green)"
+          
+          # Substituir linha de badges existente ou adicionar nova
+          if echo "$content" | grep -q "!\[Total Repos\]"; then
+            # Atualizar linha existente
+            new_content=$(echo "$content" | sed "s|!\[Total Repos\].*|$badges|")
+          else
+            # Adicionar após o primeiro bloco
+            new_content=$(echo "$content" | sed "/^---$/a\\
+\\
+$badges")
+          fi
+          
+          echo "$new_content" > README.md
+          
       - name: Commit and push
         run: |
-          git config user.name "GitHub Action"
-          git config user.email "action@github.com"
-          git add LANGUAGES_REPORT.md
-          git diff --cached --quiet || git commit -m "📊 Atualização automática do LANGUAGES_REPORT"
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add README.md
+          git commit -m "🔄 Atualizar badges no README" || exit 0
           git push
