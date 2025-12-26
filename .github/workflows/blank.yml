@@ -8,8 +8,6 @@ on:
     branches:
       - main
       - master
-    paths:
-      - '.github/workflows/languages-card.yml'
 
 permissions:
   contents: write
@@ -39,17 +37,17 @@ jobs:
           python << 'EOF'
           import os
           from github import Github
+          from github.Auth import Token
           import matplotlib.pyplot as plt
           from collections import defaultdict
 
-          # Config
           token = os.environ.get("GH_TOKEN")
           username = os.environ.get("GITHUB_USERNAME")
           if not token or not username:
               raise Exception("GH_TOKEN ou GITHUB_USERNAME não configurados")
 
-          # Conexão GitHub
-          g = Github(auth=token)
+          # Conexão GitHub corrigida
+          g = Github(auth=Token(token))
           user = g.get_user(username)
 
           # Coletar linguagens
