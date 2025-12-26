@@ -58,8 +58,18 @@ I have experience creating and interpreting **dashboards**, supporting **data an
   <img src="https://github-readme-activity-graph.vercel.app/graph?username=MarcoTuliops22&theme=tokyo-night" />
   
 ---
-  
-  <img src="https://github-profile-trophy.vercel.app/?username=MarcoTuliops22&theme=tokyonight&row=1&column=6" />
+
+  [![Estatísticas](https://github-profile-summary-cards.vercel.app/api/cards/stats?username=MarcoTuliops22&theme=github_dark)](https://github.com/MarcoTuliops22)
+[![Linguagens](https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=MarcoTuliops22&theme=github_dark)](https://github.com/MarcoTuliops22)
+
+---
+
+
+  ## 🏆 Minha Stack
+
+**Frontend:** ![HTML](https://img.shields.io/badge/HTML-45%25-E34F26) ![CSS](https://img.shields.io/badge/CSS-30%25-1572B6) ![JS](https://img.shields.io/badge/JavaScript-25%25-F7DF1E)
+
+**Ferramentas:** ![Git](https://img.shields.io/badge/Git-100%25-F05032) ![Linux](https://img.shields.io/badge/Linux-80%25-FCC624)
 
 ---
 
