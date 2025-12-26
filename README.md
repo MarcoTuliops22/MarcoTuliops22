@@ -86,7 +86,3 @@ I have experience creating and interpreting **dashboards**, supporting **data an
 📧 **Email:** marcotuliops22@gmail.com
 
 ---
-
-![CI](https://github.com/MarcoTuliops22/MarcoTuliops22/actions/workflows/blank.yml/badge.svg)
-
----
