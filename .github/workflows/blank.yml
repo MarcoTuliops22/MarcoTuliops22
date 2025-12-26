@@ -1,7 +1,7 @@
 name: Linguagens do GitHub
 
 on:
-  workflow_dispatch:   # Permite rodar manualmente
+  workflow_dispatch:  # Permite rodar manualmente
   schedule:
     - cron: "0 0 * * *"  # Executa todo dia à meia-noite
 
