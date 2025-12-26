@@ -37,12 +37,7 @@ I have experience creating and interpreting **dashboards**, supporting **data an
 
 ## 🚀 Linguagens mais usadas
 
-![Top Langs](https://metrics.lecoq.io/MarcoTuliops22?template=classic&languages=1&languages.limit=8&languages.details=percentage)
-
-
-
-
-
+<img src="./linguagens.svg" alt="Linguagens do GitHub">
 
 ---
 
