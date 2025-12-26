@@ -32,8 +32,11 @@ I have experience creating and interpreting **dashboards**, supporting **data an
   <img src="https://skillicons.dev/icons?i=html,css,js,linux,ubuntu,git,github" />
 </p>
 
----
+<!-- START_AUTO_GENERATED_LANGUAGES -->
+<!-- A seção abaixo será automaticamente atualizada pelo GitHub Actions -->
+<!-- END_AUTO_GENERATED_LANGUAGES -->
 
+---
 
 ## 🚀 Linguagens mais usadas
 
@@ -64,7 +67,7 @@ I have experience creating and interpreting **dashboards**, supporting **data an
   
 ---
 
-  ## 🏆 Minha Stack
+## 🏆 Minha Stack
 
 **Frontend:** ![HTML](https://img.shields.io/badge/HTML-45%25-E34F26) ![CSS](https://img.shields.io/badge/CSS-30%25-1572B6) ![JS](https://img.shields.io/badge/JavaScript-25%25-F7DF1E)
 
