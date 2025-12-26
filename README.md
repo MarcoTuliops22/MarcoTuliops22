@@ -37,7 +37,7 @@ I have experience creating and interpreting **dashboards**, supporting **data an
 
 ## 🚀 Linguagens mais usadas
 
-![Métricas de Linguagens](./metrics.svg)
+![Métricas de Linguagens](.github/workflows/métricas do github/metrics.svg)
 
 
 
