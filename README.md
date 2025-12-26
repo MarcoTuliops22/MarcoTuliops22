@@ -37,7 +37,8 @@ I have experience creating and interpreting **dashboards**, supporting **data an
 
 ## 🚀 Linguagens mais usadas
 
-![CI](https://github.com/MarcoTuliops22/MarcoTuliops22/actions/workflows/CI.yml/badge.svg)
+![CI](https://github.com/MarcoTuliops22/MarcoTuliops22/actions/workflows/blank.yml/badge.svg)
+
 
 ---
 
