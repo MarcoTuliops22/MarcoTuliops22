@@ -2,7 +2,7 @@ name: Generate Languages Card
 
 on:
   schedule:
-    - cron: '0 8 * * *' # diário às 8h UTC
+    - cron: '0 8 * * *'
   workflow_dispatch:
   push:
     branches:
@@ -34,53 +34,47 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_USERNAME: ${{ github.repository_owner }}
         run: |
-          python << 'EOF'
-          import os
-          from github import Github
-          from github.Auth import Token
-          import matplotlib.pyplot as plt
-          from collections import defaultdict
+          python <<EOF
+import os
+from github import Github
+from github.Auth import Token
+import matplotlib.pyplot as plt
+from collections import defaultdict
 
-          token = os.environ.get("GH_TOKEN")
-          username = os.environ.get("GITHUB_USERNAME")
-          if not token or not username:
-              raise Exception("GH_TOKEN ou GITHUB_USERNAME não configurados")
+token = os.environ.get("GH_TOKEN")
+username = os.environ.get("GITHUB_USERNAME")
+if not token or not username:
+    raise Exception("GH_TOKEN ou GITHUB_USERNAME não configurados")
 
-          # Conexão GitHub corrigida
-          g = Github(auth=Token(token))
-          user = g.get_user(username)
+g = Github(auth=Token(token))
+user = g.get_user(username)
 
-          # Coletar linguagens
-          language_bytes = defaultdict(int)
-          for repo in user.get_repos():
-              try:
-                  langs = repo.get_languages()
-                  for lang, b in langs.items():
-                      language_bytes[lang] += b
-              except:
-                  continue
+language_bytes = defaultdict(int)
+for repo in user.get_repos():
+    try:
+        langs = repo.get_languages()
+        for lang, b in langs.items():
+            language_bytes[lang] += b
+    except:
+        continue
 
-          if not language_bytes:
-              raise Exception("Nenhuma linguagem encontrada!")
+if not language_bytes:
+    raise Exception("Nenhuma linguagem encontrada!")
 
-          # Ordenar por bytes
-          language_bytes = dict(sorted(language_bytes.items(), key=lambda x: x[1], reverse=True))
+language_bytes = dict(sorted(language_bytes.items(), key=lambda x: x[1], reverse=True))
 
-          # Criar gráfico de pizza
-          fig, ax = plt.subplots(figsize=(6,6))
-          langs = list(language_bytes.keys())
-          sizes = list(language_bytes.values())
-          colors = plt.get_cmap('tab20').colors
+fig, ax = plt.subplots(figsize=(6,6))
+langs = list(language_bytes.keys())
+sizes = list(language_bytes.values())
+colors = plt.get_cmap('tab20').colors
+ax.pie(sizes, labels=langs, autopct='%1.1f%%', startangle=140, colors=colors[:len(langs)])
+ax.set_title(f"Linguagens de {username}", fontsize=16)
+plt.tight_layout()
 
-          ax.pie(sizes, labels=langs, autopct='%1.1f%%', startangle=140, colors=colors[:len(langs)])
-          ax.set_title(f"Linguagens de {username}", fontsize=16)
-          plt.tight_layout()
-
-          # Salvar SVG
-          output_file = "LANGUAGES_CARD.svg"
-          fig.savefig(output_file, format="svg")
-          print(f"✅ SVG gerado: {output_file}")
-          EOF
+output_file = "LANGUAGES_CARD.svg"
+fig.savefig(output_file, format="svg")
+print(f"✅ SVG gerado: {output_file}")
+EOF
 
       - name: Commit and push card
         run: |
