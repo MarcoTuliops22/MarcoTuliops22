@@ -71,9 +71,8 @@ ax.pie(sizes, labels=langs, autopct='%1.1f%%', startangle=140, colors=colors[:le
 ax.set_title(f"Linguagens de {username}", fontsize=16)
 plt.tight_layout()
 
-output_file = "LANGUAGES_CARD.svg"
-fig.savefig(output_file, format="svg")
-print(f"✅ SVG gerado: {output_file}")
+fig.savefig("LANGUAGES_CARD.svg", format="svg")
+print("✅ SVG gerado: LANGUAGES_CARD.svg")
 EOF
 
       - name: Commit and push card
