@@ -12,11 +12,11 @@ permissions:
   contents: write
 
 jobs:
-  generate-languages:
+  gerar-idiomas:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
 
       - name: Setup Python
@@ -24,10 +24,8 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install PyGithub
+      - name: Install PyGithub
+        run: pip install PyGithub
 
       - name: Generate LANGUAGES_REPORT.md
         env:
@@ -35,52 +33,80 @@ jobs:
           GITHUB_USERNAME: ${{ github.repository_owner }}
         run: |
           python - <<PYTHON_CODE
-          import os
-          import sys
-          from github import Github
-          from collections import defaultdict
-          from datetime import datetime
+import os
+import sys
+from github import Github
+from collections import defaultdict
+from datetime import datetime
 
-          token = os.environ.get("GH_TOKEN")
-          username = os.environ.get("GITHUB_USERNAME")
+token = os.environ.get("GH_TOKEN")
+username = os.environ.get("GITHUB_USERNAME")
 
-          if not token or not username:
-              print("Erro: GH_TOKEN ou GITHUB_USERNAME não configurado")
-              sys.exit(1)
+if not token or not username:
+    print("Erro: GH_TOKEN ou GITHUB_USERNAME não configurado")
+    sys.exit(1)
 
-          g = Github(token)
-          user = g.get_user(username)
+g = Github(token)
+user = g.get_user(username)
 
-          repos_data = []
-          language_stats = defaultdict(int)
-          language_bytes = defaultdict(int)
+repos_data = []
+language_stats = defaultdict(int)
+language_bytes = defaultdict(int)
 
-          print(f"Analisando repositórios de {username}...")
+for repo in user.get_repos():
+    try:
+        langs = repo.get_languages()
+        repos_data.append({
+            "name": repo.name,
+            "url": repo.html_url,
+            "languages": langs,
+            "primary_language": repo.language or "Não detectada",
+            "stars": repo.stargazers_count,
+            "updated_at": repo.updated_at.isoformat() if repo.updated_at else ""
+        })
+        for lang, b in langs.items():
+            language_stats[lang] += 1
+            language_bytes[lang] += b
+    except Exception as e:
+        print(f"Erro ao processar {repo.name}: {e}")
 
-          for repo in user.get_repos():
-              try:
-                  langs = repo.get_languages()
-                  repos_data.append({
-                      "name": repo.name,
-                      "url": repo.html_url,
-                      "languages": langs,
-                      "primary_language": repo.language or "Não detectada",
-                      "stars": repo.stargazers_count,
-                      "updated_at": repo.updated_at.isoformat() if repo.updated_at else ""
-                  })
-                  for lang, b in langs.items():
-                      language_stats[lang] += 1
-                      language_bytes[lang] += b
-              except Exception as e:
-                  print(f"Erro ao processar {repo.name}: {e}")
+# Markdown seguro com """ para multilinhas
+md = f"""# 📊 Relatório de Linguagens - {username}
 
-          # Gerar relatório Markdown
-          md = f"# 📊 Relatório de Linguagens - {username}\n\n"
-          md += f"**Data:** {datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')} UTC\n"
-          md += f"**Total de repositórios analisados:** {len(repos_data)}\n"
-          md += f"**Linguagens únicas encontradas:** {len(language_stats)}\n\n---\n\n"
+**Data:** {datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')} UTC
+**Total de repositórios analisados:** {len(repos_data)}
+**Linguagens únicas encontradas:** {len(language_stats)}
 
-          md += "## 🏆 Top Linguagens por repositórios\n\n"
-          sorted_langs = sorted(language_stats.items(), key=lambda x: x[1], reverse=True)
-          for lang, count in sorted_langs:
-              md += f"- **{lang}**:
+---
+
+## 🏆 Top Linguagens por repositórios
+"""
+sorted_langs = sorted(language_stats.items(), key=lambda x: x[1], reverse=True)
+for lang, count in sorted_langs:
+    md += f"- **{lang}**: {count} repositórios\n"
+
+md += "\n---\n## 📋 Lista de Repositórios\n\n"
+md += "| Repositório | Linguagem Principal | Outras Linguagens | Estrelas | Atualização |\n"
+md += "|------------|-------------------|-----------------|---------|------------|\n"
+
+for repo in repos_data:
+    langs_list = list(repo["languages"].keys())
+    other_langs = ", ".join(langs_list[:3])
+    if len(langs_list) > 3:
+        other_langs += f" (+{len(langs_list)-3})"
+    updated = repo["updated_at"][:10] if repo["updated_at"] else "N/A"
+    md += f"| [{repo['name']}]({repo['url']}) | {repo['primary_language']} | {other_langs} | {repo['stars']} | {updated} |\n"
+
+with open("LANGUAGES_REPORT.md", "w", encoding="utf-8") as f:
+    f.write(md)
+
+print("✅ LANGUAGES_REPORT.md gerado com sucesso!")
+PYTHON_CODE
+
+      - name: Commit and push
+        run: |
+          git config user.name "GitHub Action"
+          git config user.email "action@github.com"
+          git add LANGUAGES_REPORT.md
+          git diff --cached --quiet || git commit -m "📊 Atualização automática do LANGUAGES_REPORT"
+          git push
