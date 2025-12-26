@@ -38,9 +38,8 @@ I have experience creating and interpreting **dashboards**, supporting **data an
 ## 🚀 Linguagens mais usadas
 
 <div align="center">
-  
- 
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=MarcoTuliops22&layout=compact&theme=tokyonight&hide_border=true&langs_count=6&hide=html,css,scss,shell&exclude_repo=github-readme-stats&card_width=450&title_color=8a2be2&text_color=fff&bg_color=0d1117)
+
+![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=MarcoTuliops22&layout=compact&theme=tokyonight&hide_border=true&langs_count=8&exclude_repo=MarcoTuliops22.github.io&size_weight=0.5&count_weight=0.5&hide=HTML,CSS,SCSS,Less,Shell&card_width=500)
 
 </div>
 
