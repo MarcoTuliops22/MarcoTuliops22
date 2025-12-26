@@ -65,7 +65,7 @@ I have experience creating and interpreting **dashboards**, supporting **data an
   
 ---
 
- ![GitHub Trophies](https://github-profile-trophy.vercel.app/?username=MarcoTuliops22&theme=onedark&no-frame=true&row=1)
+![Top Linguagens](https://github-readme-stats.vercel.app/api/top-langs/?username=MarcoTuliops22&layout=compact&theme=dark&hide_border=true)
 
 ---
 
