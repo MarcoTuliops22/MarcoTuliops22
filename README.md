@@ -37,7 +37,7 @@ I have experience creating and interpreting **dashboards**, supporting **data an
 
 ## 🚀 Linguagens mais usadas
 
-<img src="metrics.svg" alt="Linguagens do GitHub">
+<img src="![Métricas de Linguagens(./github-metrics/metrics.svg) " alt="Linguagens do GitHub">
 
 
 ---
