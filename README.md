@@ -38,7 +38,7 @@ I have experience creating and interpreting **dashboards**, supporting **data an
 ## 🚀 Linguagens mais usadas
 
 
-![Languages](https://github.com/MarcoTuliops22/MarcoTuliops22/blob/main/metrics.plugin.languages.svg)
+![Linguagens](https://github.com/MarcoTuliops22/MarcoTuliops22/blob/main/github-metrics.svg)
 
 
 ---
