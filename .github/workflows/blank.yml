@@ -2,7 +2,7 @@ name: 📊 Generate Repository Languages Report
 
 on:
   schedule:
-    - cron: '0 8 * * *' # executa diariamente às 8h UTC
+    - cron: '0 8 * * *' # Executa diariamente às 8h UTC
   workflow_dispatch:
   push:
     branches:
@@ -17,7 +17,7 @@ permissions:
 jobs:
   analyze-languages:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
