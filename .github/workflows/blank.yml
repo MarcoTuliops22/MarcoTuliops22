@@ -1,17 +1,15 @@
-name: Update README with Languages Report
+name: Update README with Languages
 
 on:
   workflow_dispatch:
   schedule:
     - cron: '0 8 * * *'
-  push:
-    branches: [main]
 
 permissions:
   contents: write
 
 jobs:
-  update-readme:
+  update:
     runs-on: ubuntu-latest
     
     steps:
@@ -23,94 +21,36 @@ jobs:
         with:
           python-version: '3.10'
           
-      - name: Install dependencies
+      - name: Install PyGithub
         run: pip install PyGithub
         
-      - name: Generate languages data
+      - name: Generate languages section
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python3 << 'EOF'
+          python3 << "EOF"
           import os
-          from github import Github
-          from collections import defaultdict
-          from datetime import datetime
-          
-          token = os.getenv('GITHUB_TOKEN')
-          username = 'MarcoTuliops22'
-          
-          if not token:
-              print('Error: No GitHub token')
-              exit(1)
-          
-          try:
-              g = Github(token)
-              user = g.get_user(username)
-              
-              print(f'Getting repositories for {username}...')
-              
-              languages = defaultdict(int)
-              repo_count = 0
-              star_count = 0
-              
-              for repo in user.get_repos():
-                  repo_count += 1
-                  star_count += repo.stargazers_count
-                  
-                  repo_langs = repo.get_languages()
-                  for lang in repo_langs:
-                      languages[lang] += 1
-                  
-                  if repo_count % 10 == 0:
-                      print(f'  Processed {repo_count} repos...')
-              
-              print(f'\nTotal repositories: {repo_count}')
-              print(f'Total stars: {star_count}')
-              print(f'Unique languages: {len(languages)}')
-              
-              sorted_langs = sorted(languages.items(), key=lambda x: x[1], reverse=True)
-              
-              with open('languages_data.txt', 'w') as f:
-                  f.write(f'Username: {username}\n')
-                  f.write(f'Date: {datetime.now().strftime("%Y-%m-%d %H:%M")}\n')
-                  f.write(f'Total repos: {repo_count}\n')
-                  f.write(f'Total stars: {star_count}\n')
-                  f.write(f'Unique languages: {len(languages)}\n\n')
-                  f.write('Languages found:\n')
-                  for lang, count in sorted_langs:
-                      f.write(f'  - {lang}: {count} repos\n')
-              
-              print('Data saved to languages_data.txt')
-              
-          except Exception as e:
-              print(f'Error: {str(e)}')
-              exit(1)
-          EOF
-          
-      - name: Update README with languages
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          python3 << 'EOF'
-          import os
-          from github import Github
-          from collections import defaultdict
-          from datetime import datetime
           import re
+          from github import Github
+          from collections import defaultdict
+          from datetime import datetime
           
-          token = os.getenv('GITHUB_TOKEN')
-          username = 'MarcoTuliops22'
+          token = os.environ.get("GH_TOKEN")
+          username = "MarcoTuliops22"
           
           if not token:
-              print('Error: No GitHub token')
+              print("Error: No GitHub token")
               exit(1)
           
           try:
               g = Github(token)
               user = g.get_user(username)
               
+              print(f"Analyzing repositories for: {username}")
+              
               languages = defaultdict(int)
-              repo_list = []
+              repos = []
+              total_stars = 0
               
               for repo in user.get_repos():
                   if repo.private:
@@ -120,88 +60,98 @@ jobs:
                   for lang in repo_langs:
                       languages[lang] += 1
                   
-                  if repo_langs:
-                      repo_list.append({
-                          'name': repo.name,
-                          'url': repo.html_url,
-                          'stars': repo.stargazers_count,
-                          'updated': repo.updated_at.strftime('%b %Y') if repo.updated_at else 'N/A',
-                          'langs': list(repo_langs.keys())
-                      })
+                  repos.append({
+                      "name": repo.name,
+                      "url": repo.html_url,
+                      "stars": repo.stargazers_count,
+                      "updated": repo.updated_at.strftime("%b %Y") if repo.updated_at else "N/A",
+                      "langs": list(repo_langs.keys())
+                  })
+                  
+                  total_stars += repo.stargazers_count
               
               sorted_langs = sorted(languages.items(), key=lambda x: x[1], reverse=True)
               
               emoji_map = {
-                  'HTML': '🌐', 'CSS': '🎨', 'JavaScript': '📜',
-                  'Python': '🐍', 'Java': '☕', 'C++': '⚙️',
-                  'Shell': '🐚', 'Dockerfile': '🐳', 'PHP': '🐘',
-                  'TypeScript': '📘', 'Ruby': '💎', 'Go': '🐹'
+                  "HTML": "🌐", "CSS": "🎨", "JavaScript": "📜",
+                  "Python": "🐍", "Java": "☕", "C++": "⚙️",
+                  "Shell": "🐚", "TypeScript": "📘", "PHP": "🐘"
               }
               
-              now = datetime.now().strftime('%d/%m/%Y %H:%M')
+              now = datetime.now().strftime("%d/%m/%Y %H:%M")
               
-              new_section = f"""<!-- START_LANGUAGES_SECTION -->
+              new_section = f"""<!-- START_LANGUAGES -->
 ## 📊 Relatório de Linguagens
 
-**📈 Estatísticas:**
-- **Total de repositórios:** {len(repo_list)}
-- **Total de linguagens:** {len(languages)}
-- **Última atualização:** {now}
+**📈 Estatísticas Atualizadas:**
+- **Repositórios públicos:** {len(repos)}
+- **Total de estrelas:** {total_stars} ⭐
+- **Linguagens diferentes:** {len(languages)}
+- **Última análise:** {now}
 
 **🏆 Top Linguagens:**
 """
               
-              for lang, count in sorted_langs[:8]:
-                  emoji = emoji_map.get(lang, '💻')
-                  new_section += f"- {emoji} **{lang}:** {count} repositórios\n"
+              for lang, count in sorted_langs[:10]:
+                  emoji = emoji_map.get(lang, "💻")
+                  percentage = (count / len(repos)) * 100 if repos else 0
+                  new_section += f"- {emoji} **{lang}:** {count} repos ({percentage:.1f}%)\n"
               
               new_section += f"""
-**📋 Todos os Repositórios:**
-| Repositório | Linguagens | Estrelas | Atualização |
-|-------------|------------|----------|-------------|
+**📋 Repositórios Recentes:**
+| Repositório | Linguagens | Estrelas | Atualizado |
+|-------------|------------|----------|------------|
 """
               
-              for repo in sorted(repo_list, key=lambda x: x['stars'], reverse=True)[:15]:
-                  langs = ', '.join(repo['langs'][:3])
-                  if len(repo['langs']) > 3:
-                      langs += f' (+{len(repo["langs"])-3})'
+              sorted_repos = sorted(repos, key=lambda x: x["stars"], reverse=True)[:10]
+              
+              for repo in sorted_repos:
+                  langs = ", ".join(repo["langs"][:2])
+                  if len(repo["langs"]) > 2:
+                      langs += f" (+{len(repo['langs'])-2})"
                   new_section += f"| [{repo['name']}]({repo['url']}) | {langs} | ⭐{repo['stars']} | {repo['updated']} |\n"
               
               new_section += f"""
-*Relatório gerado automaticamente*
-<!-- END_LANGUAGES_SECTION -->"""
+*Relatório gerado automaticamente pelo GitHub Actions*
+<!-- END_LANGUAGES -->"""
               
-              with open('README.md', 'r', encoding='utf-8') as f:
+              with open("README.md", "r", encoding="utf-8") as f:
                   content = f.read()
               
-              pattern = r'<!-- START_LANGUAGES_SECTION -->.*<!-- END_LANGUAGES_SECTION -->'
+              pattern = r"<!-- START_LANGUAGES -->.*<!-- END_LANGUAGES -->"
               
               if re.search(pattern, content, re.DOTALL):
                   content = re.sub(pattern, new_section, content, flags=re.DOTALL)
-                  print('Updated existing section')
+                  print("Updated existing section")
               else:
-                  marker = '## 🔧 Technologies & Tools'
-                  if marker in content:
-                      content = content.replace(marker, marker + '\n\n' + new_section)
-                      print('Added section after Technologies & Tools')
+                  insert_point = "## 🔧 Technologies & Tools"
+                  if insert_point in content:
+                      content = content.replace(insert_point, insert_point + "\n\n" + new_section)
+                      print("Added section after Technologies & Tools")
                   else:
-                      content += '\n\n' + new_section
-                      print('Added section at the end')
+                      content += "\n\n" + new_section
+                      print("Added section at the end")
               
-              with open('README.md', 'w', encoding='utf-8') as f:
+              with open("README.md", "w", encoding="utf-8") as f:
                   f.write(content)
               
-              print('README updated successfully!')
+              print(f"✅ Success! Analyzed {len(repos)} repositories")
+              print(f"📊 Found {len(languages)} unique languages")
+              print(f"⭐ Total stars: {total_stars}")
               
           except Exception as e:
-              print(f'Error updating README: {str(e)}')
+              print(f"❌ Error: {str(e)}")
               exit(1)
           EOF
           
-      - name: Commit and push changes
+      - name: Commit changes
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add README.md languages_data.txt
-          git commit -m "📊 Update languages report in README" || echo "No changes to commit"
-          git push
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add README.md
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "📊 Update languages report"
+            git push
+          fi
