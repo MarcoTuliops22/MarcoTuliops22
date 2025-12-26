@@ -37,7 +37,32 @@ I have experience creating and interpreting **dashboards**, supporting **data an
 
 ## 🚀 Linguagens mais usadas
 
-<![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=MarcoTuliops22&theme=dark)
+## 📊 Estatísticas GitHub (Automáticas)
+
+> As estatísticas são atualizadas automaticamente toda semana
+
+<div align="center">
+
+![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=MarcoTuliops22&layout=compact&theme=tokyonight&hide_border=true&langs_count=6&card_width=450)
+
+</div>
+
+<div align="center">
+
+<a href="https://github.com/MarcoTuliops22">
+  <img height="180em" src="https://github-readme-stats.vercel.app/api?username=MarcoTuliops22&show_icons=true&theme=tokyonight&include_all_commits=true&count_private=true"/>
+  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=MarcoTuliops22&layout=compact&langs_count=6&theme=tokyonight"/>
+</a>
+
+![GitHub Streak](https://streak-stats.demolab.com/?user=MarcoTuliops22&theme=tokyonight)
+
+</div>
+
+---
+
+## 📈 Estatísticas Detalhadas
+
+[Clique aqui para ver estatísticas completas](./STATS.md)
 
 ---
 
