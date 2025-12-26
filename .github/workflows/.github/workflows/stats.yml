@@ -1,0 +1,61 @@
+name: 📊 Update GitHub Stats
+
+on:
+  schedule:
+    # Segunda-feira às 08:00 (Brasília = 11:00 UTC)
+    - cron: '0 11 * * 1'
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
+permissions:
+  contents: write
+
+jobs:
+  update-stats:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🚀 Checkout do repositório
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: ⚙️ Configurar Git
+        run: |
+          git config user.name "MarcoTuliops22"
+          git config user.email "marcotuliops22@gmail.com"
+
+      - name: 📊 Gerar estatísticas do GitHub
+        run: |
+          cat <<EOF > STATS.md
+          # 📊 Estatísticas do GitHub - Marco Túlio
+
+          ## 🚀 Linguagens Mais Usadas
+          ![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=MarcoTuliops22&layout=compact&theme=tokyonight&hide_border=true&langs_count=8)
+
+          ## 📈 Estatísticas Gerais
+          ![GitHub Stats](https://github-readme-stats.vercel.app/api?username=MarcoTuliops22&show_icons=true&theme=tokyonight&hide_border=true&count_private=true)
+
+          ## 🔥 Streak
+          ![GitHub Streak](https://streak-stats.demolab.com/?user=MarcoTuliops22&theme=tokyonight&hide_border=true)
+
+          ---
+          *Última atualização: $(date '+%d/%m/%Y %H:%M:%S')*
+          EOF
+
+      - name: 📤 Commitar alterações
+        run: |
+          git add STATS.md
+          if git diff --cached --quiet; then
+            echo "Nenhuma alteração detectada"
+          else
+            git commit -m "📊 Atualizar estatísticas automaticamente"
+            git push
+          fi
+
+      - name: ✅ Finalizado
+        run: echo "Estatísticas atualizadas com sucesso!"
+            git push origin main || echo "Push falhou, continuando..."
+          
+          echo "✅ Estatísticas atualizadas e enviadas com sucesso!"

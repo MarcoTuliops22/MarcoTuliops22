@@ -1,58 +1,46 @@
-name: 📊 Update GitHub Stats
+name: 📊 Update Stats (Safe)
 
 on:
-  schedule:
-    # Executa toda segunda-feira às 08:00 (horário de Brasília)
-    - cron: '0 11 * * 1'
-  # Permite executar manualmente
   workflow_dispatch:
-  # Executa quando fizer push
-  push:
-    branches: [ main ]
+
+permissions:
+  contents: write
 
 jobs:
   update-stats:
     runs-on: ubuntu-latest
-    
+
     steps:
-    - name: 🚀 Checkout repositório
-      uses: actions/checkout@v3
-      with:
-        fetch-depth: 0
-        token: ${{ secrets.GH_TOKEN }}
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
 
-    - name: 📦 Configurar Git
-      run: |
-        git config --global user.name "MarcoTuliops22"
-        git config --global user.email "marcotuliops22@gmail.com"
-        git config --global pull.rebase false
+      - name: ⚙️ Configurar Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
 
-    - name: 📈 Gerar estatísticas de linguagens
-      run: |
-        # Criar arquivo de estatísticas
-        echo "# 📊 Estatísticas do GitHub - Marco Túlio" > STATS.md
-        echo "" >> STATS.md
-        echo "## 🚀 Linguagens Mais Usadas" >> STATS.md
-        echo "" >> STATS.md
-        echo '![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=MarcoTuliops22&layout=compact&theme=tokyonight&hide_border=true&langs_count=8&hide=html,css,scss&card_width=500)' >> STATS.md
-        echo "" >> STATS.md
-        echo "## 📈 Estatísticas Gerais" >> STATS.md
-        echo "" >> STATS.md
-        echo '![GitHub Stats](https://github-readme-stats.vercel.app/api?username=MarcoTuliops22&show_icons=true&theme=tokyonight&hide_border=true&count_private=true)' >> STATS.md
-        echo "" >> STATS.md
-        echo "## 🔥 Streak" >> STATS.md
-        echo "" >> STATS.md
-        echo '![GitHub Streak](https://streak-stats.demolab.com/?user=MarcoTuliops22&theme=tokyonight&hide_border=true)' >> STATS.md
-        echo "" >> STATS.md
-        echo "---" >> STATS.md
-        echo "*Última atualização: $(date '+%d/%m/%Y %H:%M:%S')*" >> STATS.md
+      - name: 📊 Gerar STATS.md
+        run: |
+          cat <<EOF > STATS.md
+          # 📊 Estatísticas do GitHub - Marco Túlio
 
-    - name: 📤 Fazer commit das mudanças
-      run: |
-        git add STATS.md
-        git diff --quiet && git diff --staged --quiet || (git commit -m "📊 Atualizar estatísticas - $(date '+%d/%m/%Y')" && git push origin main)
-        
-    - name: ✅ Status do workflow
-      run: |
-        echo "✅ Estatísticas atualizadas com sucesso!"
-        echo "📅 Próxima atualização automática: Toda segunda-feira às 08:00"
+          ## 📈 Estatísticas Gerais
+          ![GitHub Stats](https://github-readme-stats.vercel.app/api?username=MarcoTuliops22&show_icons=true&theme=tokyonight)
+
+          ## 🚀 Linguagens Mais Usadas
+          ![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=MarcoTuliops22&layout=compact&theme=tokyonight)
+
+          ---
+          *Atualizado automaticamente em $(date '+%d/%m/%Y %H:%M:%S')*
+          EOF
+
+      - name: 📤 Commit e Push
+        run: |
+          git add STATS.md
+
+          if git diff --cached --quiet; then
+            echo "✅ Nenhuma alteração detectada"
+          else
+            git commit -m "📊 Atualizar estatísticas automaticamente"
+            git push
+          fi
