@@ -37,16 +37,19 @@ I have experience creating and interpreting **dashboards**, supporting **data an
 
 ## 🚀 Linguagens mais usadas
 
-<img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=MarcoTuliops22&theme=tokyonight&exclude=html,css" width="45%" />
+https://github-readme-stats.vercel.app/api/top-langs/?username=MarcoTuliops22
 ---
 
 ## 📊 GitHub Analytics
 
-<img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=MarcoTuliops22&theme=tokyonight" width="45%" />
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=MarcoTuliops22&theme=tokyonight" width="45%" />
 
 ---
   
-  <img src="https://streak-stats.demolab.com?user=MarcoTuliops22&theme=tokyonight" /><img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=MarcoTuliops22&theme=tokyonight" /> 
+  <img src="https://streak-stats.demolab.com?user=MarcoTuliops22&theme=tokyonight" />
+  
+---  
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=MarcoTuliops22&theme=tokyonight" /> 
   
 ---  
   
