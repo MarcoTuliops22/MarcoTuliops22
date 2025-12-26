@@ -38,6 +38,10 @@ I have experience creating and interpreting **dashboards**, supporting **data an
 ## 🚀 Linguagens mais usadas
 
 
+<img 
+  src="https://github-readme-stats.vercel.app/api/top-langs/?username=MarcoTuliops22&layout=compact&theme=tokyonight&langs_count=8" 
+/>
+
 
 ---
 
