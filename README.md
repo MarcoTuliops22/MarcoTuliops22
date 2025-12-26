@@ -37,8 +37,7 @@ I have experience creating and interpreting **dashboards**, supporting **data an
 
 ## 🚀 Linguagens mais usadas
 
-![Estatísticas](https://github-readme-stats.vercel.app/api?username=MarcoTuliops22)
-![Linguagens](https://github-readme-stats.vercel.app/api/top-langs/?username=MarcoTuliops22)
+![CI](https://github.com/MarcoTuliops22/MarcoTuliops22/actions/workflows/CI.yml/badge.svg)
 
 ---
 
