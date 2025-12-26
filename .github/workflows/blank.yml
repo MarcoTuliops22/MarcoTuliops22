@@ -2,11 +2,11 @@ name: 📊 Linguagens GitHub
 
 on:
   schedule:
-    - cron: "0 11 * * 1" # segunda 08h BR
+    - cron: "0 11 * * 1"
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: write  # <--- ESSENCIAL para commit
 
 jobs:
   metrics:
@@ -16,12 +16,9 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           user: MarcoTuliops22
-
-          # NÃO remova o base
           base: repositories
-
-          # Linguagens
           plugin_languages: yes
           plugin_languages_details: percentage
           plugin_languages_limit: 8
-          plugin_languages_threshold: 0%
+          output_action: commit    # <--- força salvar no repo
+          output_file: github-metrics.svg  # <--- nome do arquivo commitado
