@@ -1,0 +1,57 @@
+name: 🚀 Update GitHub Metrics
+
+on:
+  # Executa toda segunda e quinta
+  schedule:
+    - cron: '0 8 * * 1,4'
+  # Executa manualmente
+  workflow_dispatch:
+  # Executa quando você fizer push
+  push:
+    branches: [ main ]
+
+permissions:
+  contents: write
+
+jobs:
+  update-metrics:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: true  # IMPORTANTE!
+
+      - name: 📊 Generate GitHub Stats Image
+        run: |
+          # Criar pasta para imagens
+          mkdir -p metrics-images
+          
+          # Baixar imagem das linguagens
+          curl -o metrics-images/languages.png "https://github-readme-stats.vercel.app/api/top-langs/?username=MarcoTuliops22&layout=compact&theme=tokyonight&hide_border=true&langs_count=6"
+          
+          # Baixar imagem das estatísticas
+          curl -o metrics-images/stats.png "https://github-readme-stats.vercel.app/api?username=MarcoTuliops22&show_icons=true&theme=tokyonight&hide_border=true"
+
+      - name: 📝 Update README with Metrics
+        run: |
+          # Criar seção de métricas no README
+          METRICS_SECTION='## 📊 Métricas do GitHub\n\n<div align="center">\n\n![Estatísticas](metrics-images/stats.png)\n\n![Linguagens](metrics-images/languages.png)\n\n</div>\n\n*Última atualização: $(date "+%d/%m/%Y %H:%M")*'
+          
+          # Se o README já existir, atualiza. Se não, cria.
+          if [ -f README.md ]; then
+            # Remove seção anterior se existir
+            sed -i '/## 📊 Métricas do GitHub/,/*Última atualização:/d' README.md
+            echo -e "\n$METRICS_SECTION" >> README.md
+          else
+            echo "$METRICS_SECTION" > README.md
+          fi
+
+      - name: 💾 Commit and Push Changes
+        run: |
+          git config --local user.name "GitHub Action"
+          git config --local user.email "action@github.com"
+          git add .
+          git commit -m "📈 Atualizar métricas - $(date '+%d/%m/%Y')" || echo "Sem alterações para commitar"
+          git push
