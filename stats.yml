@@ -1,57 +1,69 @@
-name: 🚀 Update GitHub Metrics
+name: 🚀 Fix and Update Stats
 
 on:
-  # Executa toda segunda e quinta
-  schedule:
-    - cron: '0 8 * * 1,4'
-  # Executa manualmente
-  workflow_dispatch:
-  # Executa quando você fizer push
-  push:
-    branches: [ main ]
+  workflow_dispatch:  # Apenas manual
 
 permissions:
   contents: write
 
 jobs:
-  update-metrics:
+  fix-update:
     runs-on: ubuntu-latest
     
     steps:
+      # PASSO 1: Checkout com token padrão
       - name: 📥 Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
-          persist-credentials: true  # IMPORTANTE!
+          fetch-depth: 0  # Pega tudo
 
-      - name: 📊 Generate GitHub Stats Image
+      # PASSO 2: SEMPRE fazer pull primeiro
+      - name: 🔄 Sync with GitHub
         run: |
-          # Criar pasta para imagens
-          mkdir -p metrics-images
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
           
-          # Baixar imagem das linguagens
-          curl -o metrics-images/languages.png "https://github-readme-stats.vercel.app/api/top-langs/?username=MarcoTuliops22&layout=compact&theme=tokyonight&hide_border=true&langs_count=6"
+          # Puxa as alterações do GitHub
+          git pull origin main --rebase --autostash
           
-          # Baixar imagem das estatísticas
-          curl -o metrics-images/stats.png "https://github-readme-stats.vercel.app/api?username=MarcoTuliops22&show_icons=true&theme=tokyonight&hide_border=true"
-
-      - name: 📝 Update README with Metrics
-        run: |
-          # Criar seção de métricas no README
-          METRICS_SECTION='## 📊 Métricas do GitHub\n\n<div align="center">\n\n![Estatísticas](metrics-images/stats.png)\n\n![Linguagens](metrics-images/languages.png)\n\n</div>\n\n*Última atualização: $(date "+%d/%m/%Y %H:%M")*'
-          
-          # Se o README já existir, atualiza. Se não, cria.
-          if [ -f README.md ]; then
-            # Remove seção anterior se existir
-            sed -i '/## 📊 Métricas do GitHub/,/*Última atualização:/d' README.md
-            echo -e "\n$METRICS_SECTION" >> README.md
-          else
-            echo "$METRICS_SECTION" > README.md
-          fi
-
-      - name: 💾 Commit and Push Changes
-        run: |
-          git config --local user.name "GitHub Action"
-          git config --local user.email "action@github.com"
+          # Resolve qualquer conflito automaticamente
+          git checkout --ours . || true
           git add .
-          git commit -m "📈 Atualizar métricas - $(date '+%d/%m/%Y')" || echo "Sem alterações para commitar"
-          git push
+
+      # PASSO 3: Criar arquivo simples
+      - name: 📊 Create Stats File
+        run: |
+          # Remove arquivos antigos se existirem
+          rm -f STATS.md 2>/dev/null || true
+          
+          # Cria novo arquivo
+          echo "# 📊 Estatísticas do MarcoTuliops22" > STATS.md
+          echo "" >> STATS.md
+          echo "## 🚀 Atualizado em: $(date '+%d/%m/%Y %H:%M')" >> STATS.md
+          echo "" >> STATS.md
+          echo "![GitHub Stats](https://github-readme-stats.vercel.app/api?username=MarcoTuliops22)" >> STATS.md
+          echo "" >> STATS.md
+          echo "![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=MarcoTuliops22)" >> STATS.md
+
+      # PASSO 4: Commit e push seguro
+      - name: 📤 Safe Commit and Push
+        run: |
+          # Adiciona apenas o novo arquivo
+          git add STATS.md
+          
+          # Se não houver mudanças, sai
+          if git diff --staged --quiet; then
+            echo "✅ Nenhuma mudança necessária"
+            exit 0
+          fi
+          
+          # Commit
+          git commit -m "📈 Atualizar estatísticas - $(date '+%d/%m/%Y')" || echo "Commit falhou, continuando..."
+          
+          # Puxa novamente antes de push
+          git pull origin main --rebase --autostash || true
+          
+          # Push FORÇADO (apenas para este repositório de stats)
+          git push origin main --force-with-lease
+          
+          echo "✅ Atualização concluída com sucesso!"
