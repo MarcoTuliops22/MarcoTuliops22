@@ -1,1 +1,12 @@
-## 📊 Métricas do GitHub\n\n<div align="center">\n\n![Estatísticas](metrics-images/stats.png)\n\n![Linguagens](metrics-images/languages.png)\n\n</div>\n\n*Última atualização: $(date "+%d/%m/%Y %H:%M")*
+
+## 📊 Métricas do GitHub
+
+<div align="center">
+
+![Estatísticas](metrics-images/stats.png)
+
+![Linguagens](metrics-images/languages.png)
+
+</div>
+
+*Última atualização: $(date "+%d/%m/%Y %H:%M")*
