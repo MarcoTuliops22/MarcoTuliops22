@@ -1,21 +1,15 @@
-name: 📊 Generate Repository Languages Report
+name: 📊 Update GitHub Languages Card
 
 on:
   schedule:
-    - cron: '0 8 * * *' # Executa diariamente às 8h UTC
+    - cron: '0 8 * * *' # diário às 8h UTC
   workflow_dispatch:
-  push:
-    branches:
-      - main
-      - master
-    paths:
-      - '.github/workflows/languages.yml'
 
 permissions:
   contents: write
 
 jobs:
-  analyze-languages:
+  generate-card:
     runs-on: ubuntu-latest
 
     steps:
@@ -28,114 +22,71 @@ jobs:
           python-version: '3.x'
 
       - name: Install dependencies
-        run: pip install PyGithub pandas
+        run: pip install PyGithub matplotlib pandas
 
-      - name: Generate languages report
+      - name: Generate Languages Card
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_USERNAME: ${{ github.repository_owner }}
         run: |
           python << 'EOF'
           import os
-          import json
+          import matplotlib.pyplot as plt
           from github import Github
           from collections import defaultdict
           from datetime import datetime
 
-          token = os.environ.get('GITHUB_TOKEN')
-          username = os.environ.get('GITHUB_USERNAME')
-
+          # Conectar ao GitHub usando auth
+          token = os.environ.get("GITHUB_TOKEN")
+          username = os.environ.get("GITHUB_USERNAME")
           if not token or not username:
               raise Exception("GITHUB_TOKEN ou GITHUB_USERNAME não configurados")
-
-          g = Github(token)
+          
+          g = Github(auth=token)
           user = g.get_user(username)
 
-          repos_data = []
-          total_repos = 0
+          # Função segura para datetime
+          def parse_iso(iso_str):
+              # Corrige offset tipo +00:0 -> +00:00
+              if len(iso_str) >= 6 and iso_str[-3] == ":" and len(iso_str[-2:]) == 2 and iso_str[-1] != "0":
+                  iso_str = iso_str[:-1] + "0"
+              return datetime.fromisoformat(iso_str)
 
-          print(f"Analisando repositórios de: {username}")
-
-          for repo in user.get_repos():
-              total_repos += 1
-              try:
-                  languages = repo.get_languages()
-                  repo_info = {
-                      "name": repo.name,
-                      "full_name": repo.full_name,
-                      "url": repo.html_url,
-                      "description": repo.description or "",
-                      "created_at": repo.created_at.isoformat(),
-                      "updated_at": repo.updated_at.isoformat(),
-                      "stars": repo.stargazers_count,
-                      "forks": repo.forks_count,
-                      "is_fork": repo.fork,
-                      "languages": languages,
-                      "language": repo.language,
-                      "total_bytes": sum(languages.values())
-                  }
-                  repos_data.append(repo_info)
-              except Exception as e:
-                  print(f"Erro ao processar {repo.name}: {e}")
-
-          # Estatísticas
-          language_stats = defaultdict(int)
           language_bytes = defaultdict(int)
-          repos_per_language = defaultdict(list)
 
-          for repo in repos_data:
-              for lang, bytes_count in repo["languages"].items():
-                  language_stats[lang] += 1
-                  language_bytes[lang] += bytes_count
-                  repos_per_language[lang].append(repo["name"])
+          print(f"Analisando repositórios de {username}...")
+          for repo in user.get_repos():
+              try:
+                  langs = repo.get_languages()
+                  for lang, b in langs.items():
+                      language_bytes[lang] += b
+              except Exception as e:
+                  print(f"Erro no repo {repo.name}: {e}")
+                  continue
 
-          sorted_languages = sorted(language_stats.items(), key=lambda x: x[1], reverse=True)
-          sorted_by_bytes = sorted(language_bytes.items(), key=lambda x: x[1], reverse=True)
+          if not language_bytes:
+              print("Nenhuma linguagem encontrada")
+              exit(0)
 
-          # Relatório Markdown
-          report_md = f"# 📊 Relatório de Linguagens de Programação\n\n"
-          report_md += f"**Usuário:** {username}\n"
-          report_md += f"**Total de repositórios analisados:** {total_repos}\n"
-          report_md += f"**Repositórios com linguagens detectadas:** {len(repos_data)}\n"
-          report_md += f"**Data da análise:** {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n"
-          report_md += "---\n\n## 📈 Estatísticas Gerais\n\n"
-          report_md += "### Linguagens por Número de Repositórios\n"
-          report_md += "\n".join([f"1. **{lang}**: {count} repositórios" for lang, count in sorted_languages[:20]]) + "\n\n"
-          report_md += "### Linguagens por Volume de Código\n"
-          report_md += "\n".join([f"1. **{lang}**: {bytes_count:,} bytes" for lang, bytes_count in sorted_by_bytes[:15]]) + "\n\n"
-          report_md += "---\n\n## 🗂️ Lista Completa de Repositórios\n\n"
-          report_md += "| Repositório | Linguagem Principal | Outras Linguagens | Estrelas | Última Atualização |\n"
-          report_md += "|-------------|-------------------|-----------------|----------|------------------|\n"
+          # Ordenar linguagens por bytes
+          sorted_langs = sorted(language_bytes.items(), key=lambda x: x[1], reverse=True)
+          labels = [l[0] for l in sorted_langs[:10]]  # Top 10
+          sizes = [l[1] for l in sorted_langs[:10]]
 
-          for repo in sorted(repos_data, key=lambda x: x["updated_at"], reverse=True):
-              main_lang = repo["language"] or "N/A"
-              other_langs = ", ".join(list(repo["languages"].keys())[:3])
-              if len(repo["languages"]) > 3:
-                  other_langs += f"... (+{len(repo['languages'])-3})"
-              updated = datetime.fromisoformat(repo["updated_at"][:-1]).strftime('%Y-%m-%d')
-              report_md += f"| [{repo['name']}]({repo['url']}) | {main_lang} | {other_langs} | ⭐ {repo['stars']} | {updated} |\n"
+          # Gerar gráfico tipo pie
+          plt.figure(figsize=(6,6))
+          plt.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=140, colors=plt.cm.tab20.colors)
+          plt.title(f"Linguagens mais usadas - {username}", fontsize=14)
+          plt.tight_layout()
 
-          # Salvar Markdown
-          with open("LANGUAGES_REPORT.md", "w", encoding="utf-8") as f:
-              f.write(report_md)
-
-          # Salvar JSON
-          with open("languages_data.json", "w", encoding="utf-8") as f:
-              json.dump({
-                  "metadata": {"username": username, "total_repos": total_repos, "analyzed_repos": len(repos_data), "generated_at": datetime.now().isoformat()},
-                  "language_stats": dict(language_stats),
-                  "language_bytes": dict(language_bytes),
-                  "repos_per_language": dict(repos_per_language),
-                  "repositories": repos_data
-              }, f, indent=2, ensure_ascii=False)
-
-          print("Relatório Markdown e JSON gerados com sucesso!")
+          plt.savefig("github-languages-card.svg", format="svg")
+          print("Card gerado em github-languages-card.svg")
           EOF
 
-      - name: Commit and push report
+      - name: Commit and push card
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add LANGUAGES_REPORT.md languages_data.json
-          git diff --cached --quiet || git commit -m "📊 Update languages report [skip ci]"
+          git add github-languages-card.svg
+          git diff --cached --quiet || git commit -m "📊 Update languages card [skip ci]"
           git push
