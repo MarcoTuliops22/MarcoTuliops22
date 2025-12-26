@@ -37,8 +37,7 @@ I have experience creating and interpreting **dashboards**, supporting **data an
 
 ## 🚀 Linguagens mais usadas
 
-
-![Estatísticas WakaTime](https://github-readme-stats.vercel.app/api/wakatime?username=MarcoTuliops22&layout=compact&theme=dark)
+[![Top Linguagens](https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=MarcoTuliops22&theme=github_dark)](https://github.com/MarcoTuliops22)
  
 
 ---
