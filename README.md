@@ -1,5 +1,5 @@
 # 👋 Marco Túlio Pereira da Silva
-### Técnico em Informática | Suporte em TI | Infraestrutura & Redes
+### Técnico em Informática | Suporte em TI | Infraestrutura & Redes | Dev | Cybersecurity
 
 <p align="left">
   <img src="https://komarev.com/ghpvc/?username=MarcoTuliops22&color=blueviolet&style=flat-square" alt="Profile Views" />
@@ -11,21 +11,21 @@
 
 ## 🇧🇷 Sobre mim
 
-Sou **Técnico em Informática**, com experiência em **montagem, instalação e manutenção de microcomputadores**, além de sólida atuação em **configuração e manutenção de redes e roteadores**. Possuo domínio do **Pacote Office (Word, Excel e PowerPoint)** e conhecimento aprofundado sobre a **estrutura e funcionamento de computadores**, aplicando boas práticas de **suporte técnico e gestão de TI**.
+Sou **Técnico em Informática**, com sólida experiência em **infraestrutura, suporte técnico, montagem e manutenção de computadores**, além de atuação direta em **configuração de redes e roteadores**. No ecossistema de desenvolvimento, atuo com soluções **Full Stack**, manipulando tecnologias de **Front-end** (React, JavaScript, TypeScript) e arquiteturas de **Back-end** com Node.js e Python, além do gerenciamento e estruturação de bancos de dados relacionais utilizando **MySQL**.
 
-Minha formação inclui **lógica de programação**, **Indústria 4.0**, **introdução à Inteligência Artificial**, **redes de computadores** e **infraestrutura**. Também possuo conhecimentos em **qualidade, produtividade, sustentabilidade** e **saúde e segurança do trabalho**.
+Minha trajetória é impulsionada pela aplicação de boas práticas em **Cibersegurança**, utilizando sistemas como **Kali Linux** para auditorias de segurança e infraestrutura. Possuo formação sólida em lógica de programação, **Indústria 4.0**, **Inteligência Artificial**, além de experiência prática na criação e interpretação de dashboards para análise de dados e tomada de decisões.
 
-Tenho experiência na **criação e interpretação de dashboards**, apoiando a **análise de dados e tomada de decisões**. Busco constante evolução para entregar **soluções tecnológicas eficientes e alinhadas às necessidades do negócio**.
+Busco constante evolução para entregar soluções tecnológicas eficientes, robustas, seguras e alinhadas às necessidades do negócio.
 
 ---
 
 ## 🇺🇸 About Me
 
-I am an **IT Technician** with experience in **computer assembly, installation, and maintenance**, as well as solid expertise in **network and router configuration and maintenance**. I have strong skills in **Microsoft Office** and deep knowledge of **computer architecture and operation**, applying best practices in **IT support and management**.
+I am an **IT Technician** with solid experience in **IT infrastructure, technical support, computer assembly, and maintenance**, as well as hands-on expertise in **network and router configuration**. In the development ecosystem, I work with **Full Stack** solutions, leveraging **Front-end** technologies (React, JavaScript, TypeScript) and **Back-end** architectures with Node.js and Python, alongside relational database management using **MySQL**.
 
-My background includes **programming logic**, **Industry 4.0**, **introduction to Artificial Intelligence**, **computer networks**, and **IT infrastructure**, as well as **quality, productivity, sustainability**, and **occupational health and safety**.
+My professional path is driven by implementing best practices in **Cybersecurity**, employing platforms like **Kali Linux** for infrastructure and security auditing. I have a strong background in programming logic, **Industry 4.0**, **Artificial Intelligence**, and practical experience creating and interpreting dashboards for data analysis and decision-making.
 
-I have experience creating and interpreting **dashboards**, supporting **data analysis and decision-making**, and I continuously seek to improve my skills to deliver **effective and business-oriented solutions**.
+I continuously seek evolution to deliver efficient, robust, secure, and business-oriented technological solutions.
 
 ---
 
@@ -41,10 +41,17 @@ I have experience creating and interpreting **dashboards**, supporting **data an
   <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3" />
 </p>
 
-### ⚙️ Back-end & Infraestrutura
+### ⚙️ Back-end & Bancos de Dados
 <p align="left">
   <img src="https://img.shields.io/badge/NODE.JS-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Node.js" />
   <img src="https://img.shields.io/badge/PYTHON-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" />
+  <img src="https://img.shields.io/badge/MYSQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL" />
+</p>
+
+### 🛡️ Infraestrutura & Cibersegurança
+<p align="left">
+  <img src="https://img.shields.io/badge/CYBERSECURITY-000000?style=for-the-badge&logo=hackthebox&logoColor=white" alt="Cibersegurança" />
+  <img src="https://img.shields.io/badge/KALI_LINUX-557C94?style=for-the-badge&logo=kalilinux&logoColor=white" alt="Kali Linux" />
   <img src="https://img.shields.io/badge/LINUX-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Linux" />
   <img src="https://img.shields.io/badge/UBUNTU-E95420?style=for-the-badge&logo=ubuntu&logoColor=white" alt="Ubuntu" />
 </p>
