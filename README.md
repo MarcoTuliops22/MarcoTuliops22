@@ -27,39 +27,38 @@ I have experience creating and interpreting **dashboards**, supporting **data an
 
 ---
 
-## 🔧 Technologies & Tools
-<p align="left">
-  <img src="https://skillicons.dev/icons?i=html,css,js,linux,ubuntu,git,github" />
-</p>
+## 🛠️ Minhas Tecnologias & Ferramentas
 
-<!-- START_AUTO_GENERATED_LANGUAGES -->
-<!-- A seção abaixo será automaticamente atualizada pelo GitHub Actions -->
-<!-- END_AUTO_GENERATED_LANGUAGES -->
+### 💻 Front-end e Mobile
+![React](https://img.shields.io/badge/REACT-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![React Native](https://img.shields.io/badge/REACT_NATIVE-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![JavaScript](https://img.shields.io/badge/JAVASCRIPT-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![TypeScript](https://img.shields.io/badge/TYPESCRIPT-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 
----
+### ⚙️ Back-end
+![Node.js](https://img.shields.io/badge/NODE.JS-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
+![Python](https://img.shields.io/badge/PYTHON-3776AB?style=for-the-badge&logo=python&logoColor=white)
 
-## 🚀 Linguagens mais usadas
-
-**Frontend:** ![HTML](https://img.shields.io/badge/HTML-45%25-E34F26) ![CSS](https://img.shields.io/badge/CSS-30%25-1572B6) ![JS](https://img.shields.io/badge/JavaScript-25%25-F7DF1E)
-
-**Ferramentas:** ![Git](https://img.shields.io/badge/Git-100%25-F05032) ![Linux](https://img.shields.io/badge/Linux-80%25-FCC624)
-
+### 🎨 Design e Ferramentas
+![Figma](https://img.shields.io/badge/FIGMA-F24E1E?style=for-the-badge&logo=figma&logoColor=white)
+![Git](https://img.shields.io/badge/GIT-F05032?style=for-the-badge&logo=git&logoColor=white)
+![Linux](https://img.shields.io/badge/LINUX-FCC624?style=for-the-badge&logo=linux&logoColor=black)
+![Ubuntu](https://img.shields.io/badge/UBUNTU-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)
 
 ---
 
 ## 📊 GitHub Analytics
 
----
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=MarcoTuliops22&show_icons=true&theme=tokyonight&count_private=true&hide_border=false" alt="Estatísticas do GitHub" height="195" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=MarcoTuliops22&layout=compact&theme=tokyonight&hide_border=false" alt="Idiomas mais usados" height="195" />
+</p>
 
-[![Estatísticas](https://github-profile-summary-cards.vercel.app/api/cards/stats?username=MarcoTuliops22&theme=github_dark)](https://github.com/MarcoTuliops22)
-
----
-
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=MarcoTuliops22&theme=tokyonight" width="45%" />
-
----   
-  
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=MarcoTuliops22&theme=tokyo-night" />
+<p align="center">
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=MarcoTuliops22&theme=tokyo-night" width="100%" />
+</p>
   
 ---
 
