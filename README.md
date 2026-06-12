@@ -1,5 +1,5 @@
 # 👋 Marco Túlio Pereira da Silva
-### Técnico em Informática | Suporte em TI | Infraestrutura & Redes | Dev
+### Técnico em Informática | Suporte em TI | Infraestrutura & Redes
 
 <p align="left">
   <img src="https://komarev.com/ghpvc/?username=MarcoTuliops22&color=blueviolet&style=flat-square" alt="Profile Views" />
@@ -57,14 +57,6 @@ I have experience creating and interpreting **dashboards**, supporting **data an
 
 ---
 
-## 🏆 Conquistas & Reconhecimentos / Badges & Trophies
-
-<p align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=MarcoTuliops22&theme=tokyonight&column=4&margin-w=15&margin-h=15&no-bg=false&no-frame=false" alt="Meus Troféus do GitHub" />
-</p>
-
----
-
 ## 📊 Estatísticas do GitHub / GitHub Analytics
 
 <p align="center">
@@ -73,7 +65,7 @@ I have experience creating and interpreting **dashboards**, supporting **data an
 </p>
 
 <p align="center">
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=MarcoTuliops22&theme=tokyonight&hide_border=false" alt="GitHub Streak Stats" backend="true" />
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=MarcoTuliops22&theme=tokyonight&hide_border=false" alt="GitHub Streak Stats" />
 </p>
 
 <p align="center">
