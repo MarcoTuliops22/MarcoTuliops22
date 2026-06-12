@@ -13,7 +13,7 @@
 
 Sou **Técnico em Informática**, com sólida experiência em **infraestrutura, suporte técnico, montagem e manutenção de computadores**, além de atuação direta em **configuração de redes e roteadores**. No ecossistema de desenvolvimento, atuo com soluções **Full Stack**, manipulando tecnologias de **Front-end** (React, JavaScript, TypeScript) e arquiteturas de **Back-end** com Node.js e Python, além do gerenciamento e estruturação de bancos de dados relacionais utilizando **MySQL**.
 
-Minha trajetória é impulsionada pela aplicação de boas práticas em **Cibersegurança**, utilizando sistemas como **Kali Linux** para auditorias de segurança e infraestrutura. Possuo formação sólida em lógica de programação, **Indústria 4.0**, **Inteligência Artificial**, além de experiência prática na criação e interpretação de dashboards para análise de dados e tomada de decisões.
+Minha trajetória é impulsionada pela aplicação de boas práticas em **Cibersegurança**, utilizando sistemas como **Kali Linux** para auditorias de segurança e infraestrutura. Possuo formação sólida em lógica de programação, **Indústria 4.0**, **Inteligência Artificial**, além de experiência prática avançada na **criação, manipulação e interpretação de dashboards interativos no Looker Studio**, apoiando diretamente a análise de dados estratégicos e a tomada de decisões.
 
 Busco constante evolução para entregar soluções tecnológicas eficientes, robustas, seguras e alinhadas às necessidades do negócio.
 
@@ -23,7 +23,7 @@ Busco constante evolução para entregar soluções tecnológicas eficientes, ro
 
 I am an **IT Technician** with solid experience in **IT infrastructure, technical support, computer assembly, and maintenance**, as well as hands-on expertise in **network and router configuration**. In the development ecosystem, I work with **Full Stack** solutions, leveraging **Front-end** technologies (React, JavaScript, TypeScript) and **Back-end** architectures with Node.js and Python, alongside relational database management using **MySQL**.
 
-My professional path is driven by implementing best practices in **Cybersecurity**, employing platforms like **Kali Linux** for infrastructure and security auditing. I have a strong background in programming logic, **Industry 4.0**, **Artificial Intelligence**, and practical experience creating and interpreting dashboards for data analysis and decision-making.
+My professional path is driven by implementing best practices in **Cybersecurity**, employing platforms like **Kali Linux** for infrastructure and security auditing. I have a strong background in programming logic, **Industry 4.0**, **Artificial Intelligence**, and advanced practical experience in **creating, manipulating, and interpreting interactive dashboards using Looker Studio** to support data analysis and decision-making.
 
 I continuously seek evolution to deliver efficient, robust, secure, and business-oriented technological solutions.
 
@@ -52,12 +52,14 @@ I continuously seek evolution to deliver efficient, robust, secure, and business
 <p align="left">
   <img src="https://img.shields.io/badge/CYBERSECURITY-000000?style=for-the-badge&logo=hackthebox&logoColor=white" alt="Cibersegurança" />
   <img src="https://img.shields.io/badge/KALI_LINUX-557C94?style=for-the-badge&logo=kalilinux&logoColor=white" alt="Kali Linux" />
+  <img src="https://img.shields.io/badge/WINDOWS-0078D6?style=for-the-badge&logo=windows&logoColor=white" alt="Windows" />
   <img src="https://img.shields.io/badge/LINUX-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Linux" />
   <img src="https://img.shields.io/badge/UBUNTU-E95420?style=for-the-badge&logo=ubuntu&logoColor=white" alt="Ubuntu" />
 </p>
 
-### 🎨 Design & Utilities
+### 🎨 Design, Data & Utilities
 <p align="left">
+  <img src="https://img.shields.io/badge/LOOKER_STUDIO-4285F4?style=for-the-badge&logo=google&logoColor=white" alt="Looker Studio" />
   <img src="https://img.shields.io/badge/FIGMA-F24E1E?style=for-the-badge&logo=figma&logoColor=white" alt="Figma" />
   <img src="https://img.shields.io/badge/GIT-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git" />
 </p>
