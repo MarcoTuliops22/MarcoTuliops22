@@ -1,9 +1,11 @@
 # 👋 Marco Túlio Pereira da Silva
-### Técnico em Informática | Suporte em TI | Infraestrutura & Redes
+### Técnico em Informática | Suporte em TI | Infraestrutura & Redes | Dev
 
-![Profile Views](https://komarev.com/ghpvc/?username=MarcoTuliops22&color=blueviolet&style=flat-square)
-![GitHub followers](https://img.shields.io/github/followers/MarcoTuliops22?style=flat-square)
-![GitHub stars](https://img.shields.io/github/stars/MarcoTuliops22?style=flat-square)
+<p align="left">
+  <img src="https://komarev.com/ghpvc/?username=MarcoTuliops22&color=blueviolet&style=flat-square" alt="Profile Views" />
+  <img src="https://img.shields.io/github/followers/MarcoTuliops22?style=flat-square" alt="GitHub followers" />
+  <img src="https://img.shields.io/github/stars/MarcoTuliops22?style=flat-square" alt="GitHub stars" />
+</p>
 
 ---
 
@@ -27,29 +29,43 @@ I have experience creating and interpreting **dashboards**, supporting **data an
 
 ---
 
-## 🛠️ Minhas Tecnologias & Ferramentas
+## 🛠️ Tecnologias & Ferramentas / Technologies & Tools
 
-### 💻 Front-end e Mobile
-![React](https://img.shields.io/badge/REACT-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![React Native](https://img.shields.io/badge/REACT_NATIVE-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![JavaScript](https://img.shields.io/badge/JAVASCRIPT-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![TypeScript](https://img.shields.io/badge/TYPESCRIPT-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+### 💻 Front-end & Mobile
+<p align="left">
+  <img src="https://img.shields.io/badge/REACT-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React" />
+  <img src="https://img.shields.io/badge/REACT_NATIVE-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React Native" />
+  <img src="https://img.shields.io/badge/JAVASCRIPT-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript" />
+  <img src="https://img.shields.io/badge/TYPESCRIPT-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5" />
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3" />
+</p>
 
-### ⚙️ Back-end
-![Node.js](https://img.shields.io/badge/NODE.JS-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
-![Python](https://img.shields.io/badge/PYTHON-3776AB?style=for-the-badge&logo=python&logoColor=white)
+### ⚙️ Back-end & Infraestrutura
+<p align="left">
+  <img src="https://img.shields.io/badge/NODE.JS-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Node.js" />
+  <img src="https://img.shields.io/badge/PYTHON-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" />
+  <img src="https://img.shields.io/badge/LINUX-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Linux" />
+  <img src="https://img.shields.io/badge/UBUNTU-E95420?style=for-the-badge&logo=ubuntu&logoColor=white" alt="Ubuntu" />
+</p>
 
-### 🎨 Design e Ferramentas
-![Figma](https://img.shields.io/badge/FIGMA-F24E1E?style=for-the-badge&logo=figma&logoColor=white)
-![Git](https://img.shields.io/badge/GIT-F05032?style=for-the-badge&logo=git&logoColor=white)
-![Linux](https://img.shields.io/badge/LINUX-FCC624?style=for-the-badge&logo=linux&logoColor=black)
-![Ubuntu](https://img.shields.io/badge/UBUNTU-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)
+### 🎨 Design & Utilities
+<p align="left">
+  <img src="https://img.shields.io/badge/FIGMA-F24E1E?style=for-the-badge&logo=figma&logoColor=white" alt="Figma" />
+  <img src="https://img.shields.io/badge/GIT-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git" />
+</p>
 
 ---
 
-## 📊 GitHub Analytics
+## 🏆 Conquistas & Reconhecimentos / Badges & Trophies
+
+<p align="center">
+  <img src="https://github-profile-trophy.vercel.app/?username=MarcoTuliops22&theme=tokyonight&column=4&margin-w=15&margin-h=15&no-bg=false&no-frame=false" alt="Meus Troféus do GitHub" />
+</p>
+
+---
+
+## 📊 Estatísticas do GitHub / GitHub Analytics
 
 <p align="center">
   <img src="https://github-readme-stats.vercel.app/api?username=MarcoTuliops22&show_icons=true&theme=tokyonight&count_private=true&hide_border=false" alt="Estatísticas do GitHub" height="195" />
@@ -57,17 +73,27 @@ I have experience creating and interpreting **dashboards**, supporting **data an
 </p>
 
 <p align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=MarcoTuliops22&theme=tokyo-night" width="100%" />
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=MarcoTuliops22&theme=tokyonight&hide_border=false" alt="GitHub Streak Stats" backend="true" />
+</p>
+
+<p align="center">
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=MarcoTuliops22&theme=tokyo-night" width="95%" />
 </p>
   
 ---
 
-## 🌐 Conecte-se comigo | Connect with me
+## 🌐 Conecte-se comigo / Connect with me
 
-[![Instagram](https://img.shields.io/badge/Instagram-8a2be2?style=flat-square&logo=instagram&logoColor=white)](https://www.instagram.com/marcotuliops94/)  [![LinkedIn](https://img.shields.io/badge/LinkedIn-8a2be2?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/marco-t%C3%BAlio-pereira-da-silva-31b740389/)
-
----
-
-📧 **Email:** marcotuliops22@gmail.com
+<p align="center">
+  <a href="https://www.linkedin.com/in/marco-t%C3%BAlio-pereira-da-silva-31b740389/" target="_blank">
+    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
+  </a>
+  <a href="https://www.instagram.com/marcotuliops94/" target="_blank">
+    <img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram" />
+  </a>
+  <a href="mailto:marcotuliops22@gmail.com">
+    <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" />
+  </a>
+</p>
 
 ---
